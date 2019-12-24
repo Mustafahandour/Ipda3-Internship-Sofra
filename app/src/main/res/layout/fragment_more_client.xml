@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:text="@string/more"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_20"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/fragment_more_client_et_offers"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:drawableStart="@drawable/ic_offers_purple"
+        android:drawablePadding="@dimen/dim_8dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"        android:text="@string/offers"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_18" />
+
+    <EditText
+        android:id="@+id/fragment_more_client_et_contact_us"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:drawableStart="@drawable/ic_mail_purple"
+        android:drawablePadding="@dimen/dim_8dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"        android:text="@string/contact_us"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_18" />
+
+    <EditText
+        android:id="@+id/fragment_more_client_et_about_app"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:drawableStart="@drawable/ic_aboutapp_purple"
+        android:drawablePadding="@dimen/dim_8dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"        android:text="@string/about_app"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_18" />
+
+    <EditText
+        android:id="@+id/fragment_more_client_et_change_password"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:drawableStart="@drawable/ic_lock_purple"
+        android:drawablePadding="@dimen/dim_8dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"        android:text="@string/change_password"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_18" />
+
+    <EditText
+        android:id="@+id/fragment_more_client_et_logout"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:drawableStart="@drawable/ic_sign_out_purple"
+        android:drawablePadding="@dimen/dim_8dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"        android:text="@string/sign_out"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_18" />
+
+
+</LinearLayout>

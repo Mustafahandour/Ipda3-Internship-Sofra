@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCAC5252"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/margin_st_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/dim_70dp"
+        android:text="@string/contact_data"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/restaurant_register_fragment_step2_ti_phone"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone"
+        android:textColorHint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="@dimen/dim_8dp"
+            android:inputType="phone"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/restaurant_register_fragment_step2_ti_whatsApp"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/whatsapp"
+
+        android:textColorHint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:drawableStart="@drawable/ic_whatsapp"
+            android:drawablePadding="@dimen/dim_8dp"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        style="@style/margin_st_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/dim_70dp"
+        android:text="@string/store_photo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold" />
+<RelativeLayout
+    android:layout_width="@dimen/dim_50dp"
+    android:layout_height="@dimen/dim_50dp"
+    android:background="@drawable/shap_bt_sq"
+    android:layout_marginStart="@dimen/dim_32dp"
+    android:layout_marginTop="@dimen/dim_16dp"
+    android:layout_marginEnd="@dimen/dim_32dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/restaurant_register_fragment_step2_ci_store_photo"
+        android:layout_width="@dimen/dim_50dp"
+        android:layout_height="@dimen/dim_50dp"
+        android:background="@drawable/ic_store_restaurant"
+        android:contentDescription="@string/store" />
+</RelativeLayout>
+
+
+    <Button
+        android:id="@+id/restaurant_register_fragment_step2_bt_login"
+        android:layout_width="@dimen/dim_200dp"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dim_40dp"
+        android:background="@drawable/shap_bt_rectangle"
+        android:drawableTop="@drawable/ic_sign_in"
+        android:text="@string/login"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/margin_st_end"
+        android:layout_width="300dp"
+        android:layout_height="@dimen/dim_150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:background="@drawable/shap_rect_list">
+
+        <TextView
+            android:id="@+id/item_offers_list_tv_offer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_marginStart="@dimen/dim_32dp"
+            android:layout_marginTop="@dimen/dim_32dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:paddingStart="@dimen/dim_8dp"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/font_18sp" />
+
+        <Button
+            android:id="@+id/item_offers_list_bt_details"
+            android:layout_width="@dimen/dim_150dp"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/dim_32dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/shap_bt_rectangle"
+            android:text="@string/details"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/dim_100dp"
+        android:layout_height="@dimen/dim_100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="@dimen/dim_32dp"
+        android:background="@drawable/shap_circle">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_offers_list_ci_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/restaurant_image" />
+    </RelativeLayout>
+</RelativeLayout>

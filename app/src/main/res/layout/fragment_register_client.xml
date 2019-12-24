@@ -1,0 +1,185 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brooke_lark_unsplash"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/client_register_fragment_rl_profile_pic"
+            style="@style/margin_st_end"
+            android:layout_width="@dimen/dim_150dp"
+            android:layout_height="@dimen/dim_150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dim_4dp"
+            android:background="@drawable/shap_circle"
+            android:gravity="center_horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/client_register_fragment_ib_profile_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dim_40dp"
+                android:background="@drawable/ic_user_plus"
+                android:contentDescription="@string/profile_pic" />
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/client_register_fragment_ti_name"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:drawableStart="@drawable/ic_name"
+                android:drawablePadding="@dimen/dim_8dp"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/client_register_fragment_ti_email"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:hint="@string/email"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:backgroundTint="@color/white"
+                android:drawableStart="@drawable/ic_mail"
+                android:drawablePadding="@dimen/dim_8dp"
+                android:inputType="textEmailAddress"
+                tools:targetApi="lollipop" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/client_register_fragment_ti_phone"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:hint="@string/phone"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="@dimen/dim_8dp"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            style="@style/margin_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shap_solid_rectangle">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="@dimen/dim_8dp"
+                android:paddingEnd="@dimen/dim_8dp"
+                android:src="@drawable/ic_place" />
+
+            <Spinner
+                android:id="@+id/client_register_fragment_sp_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_8dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/client_register_fragment_rl_region"
+            style="@style/margin_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shap_solid_rectangle">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="@dimen/dim_8dp"
+                android:paddingEnd="@dimen/dim_8dp"
+                android:src="@drawable/ic_place" />
+
+            <Spinner
+                android:id="@+id/client_register_fragment_sp_region"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_8dp" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/client_register_fragment_ti_password"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:hint="@string/password"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:drawableStart="@drawable/ic_locked_"
+                android:drawablePadding="@dimen/dim_8dp"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/client_register_fragment_ti_confirm_password"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:hint="@string/confirm_password"
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:drawableStart="@drawable/ic_locked_"
+                android:drawablePadding="@dimen/dim_8dp"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/client_register_fragment_bt_login"
+            android:layout_width="@dimen/dim_200dp"
+            android:layout_height="@dimen/dim_50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/shap_bt_rectangle"
+            android:drawableTop="@drawable/ic_sign_in"
+            android:text="@string/login"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</ScrollView>

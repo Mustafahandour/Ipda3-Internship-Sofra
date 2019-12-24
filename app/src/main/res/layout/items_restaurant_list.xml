@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/margin_16dp"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true">
+
+            <ImageButton
+                android:id="@+id/items_restaurant_ib_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_delete"
+                style="@style/margin_st_end"/>
+            <ImageButton
+                android:id="@+id/items_restaurant_ib_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_edit_solid"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_100dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shap_rect_list">
+        <ImageView
+            android:id="@+id/items_restaurant_iv_image"
+            android:layout_marginStart="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="@dimen/dim_80dp"
+            android:layout_height="@dimen/dim_80dp"
+            android:background="@drawable/shap_bt_sq"
+            />
+        <LinearLayout
+            android:layout_width="@dimen/dim_200dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/items_restaurant_tv_item_name"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:layout_marginEnd="@dimen/dim_8dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:textSize="@dimen/font_18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/items_restaurant_tv_item_des"
+                android:textColor="@color/purple"
+                android:textStyle="normal"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:layout_marginEnd="@dimen/dim_8dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:textSize="@dimen/font_14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/items_restaurant_tv_item_cost"
+            android:textColor="@color/purple"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dim_4dp"
+            android:layout_marginEnd="@dimen/dim_4dp"
+            android:paddingTop="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_4dp"
+            android:paddingStart="@dimen/dim_4dp"
+            android:textSize="@dimen/font_18sp"
+            android:layout_width="@dimen/dim_80dp"
+            android:layout_height="match_parent"/>
+
+
+    </RelativeLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

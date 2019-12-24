@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dim_16dp"
+    android:background="@drawable/shap_rect_list">
+
+    <LinearLayout
+        android:id="@+id/item_current_order_list_ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/item_current_order_list_rl_ci"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/dim_4dp"
+        android:layout_marginTop="@dimen/dim_8dp">
+
+        <TextView
+            android:id="@+id/item_current_order_list_tv_rest_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_30"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/font_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/item_current_order_list_tv_order_num"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_30"
+            android:textColor="@color/red"
+            android:textSize="@dimen/font_18sp"
+          />
+
+        <TextView
+            android:id="@+id/item_current_order_list_tv_total_cost"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_30"
+            android:textColor="@color/red"
+            android:textSize="@dimen/font_18sp"
+           />
+
+        <TextView
+            android:id="@+id/item_current_order_list_tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_30"
+            android:textColor="@color/red"
+            android:textSize="@dimen/font_18sp"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_current_order_list_rl_ci"
+        android:layout_width="@dimen/album_dp_80"
+        android:layout_height="@dimen/album_dp_80"
+        android:background="@drawable/shap_circle"
+        android:layout_marginStart="@dimen/dim_16dp"
+        android:layout_marginEnd="@dimen/album_dp_4"
+        android:layout_marginTop="@dimen/album_dp_30"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_current_order_list_ci_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/item_current_order_list_bt_order_confirm"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_40dp"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        android:layout_below="@id/item_current_order_list_ll_info"
+        android:background="@drawable/shap_circl_rect_green"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

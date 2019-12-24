@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dim_16dp">
+
+    <LinearLayout
+        android:id="@+id/items_restaurant_details_list_ll_image"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_100dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:background="@drawable/shap_rect_list">
+
+        <ImageView
+            android:id="@+id/items_restaurant_details_list_iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_100dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/items_restaurant_details_list_ll_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_120dp"
+        android:layout_below="@+id/items_restaurant_details_list_ll_image"
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_marginTop="@dimen/dim_50"
+        android:layout_marginEnd="@dimen/dim_20dp"
+        android:background="@drawable/shap_rect_list"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/items_restaurant_details_list_tv_name"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:gravity="start"
+            android:textColor="@color/pink"
+            android:textSize="@dimen/font_20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/items_restaurant_details_list_tv_item_description"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:gravity="start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/items_restaurant_details_list_tv_cost"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:gravity="start"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/font_18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

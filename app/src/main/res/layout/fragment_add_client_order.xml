@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="@dimen/dim_24dp"
+            style="@style/margin_st_end"
+            android:id="@+id/add_client_order_fragment_iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_150dp"
+            android:contentDescription="@string/todo"
+            android:background="@drawable/shap_rect_list"
+            />
+
+    <LinearLayout
+        android:layout_marginTop="-40dp"
+        android:id="@+id/add_client_order_fragment_ll_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_120dp"
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_marginEnd="@dimen/dim_20dp"
+        android:background="@drawable/shap_rect_list"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_name"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:gravity="start"
+            android:textColor="@color/pink"
+            android:textSize="@dimen/font_20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_item_description"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:gravity="start"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_cost"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:gravity="start"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/font_18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_line"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/add_client_order_fragment_tv_note"
+            android:layout_marginTop="@dimen/dim_32dp"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_note"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/add_client_order_fragment_et_note"
+            android:text="@string/special_order"
+            android:textColor="@color/purple"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/add_client_order_fragment_et_note"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_100dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shap_circl_rect_grey"
+            android:gravity="top"
+            android:hint="@string/enter_your_order"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_8dp"
+            android:paddingTop="@dimen/dim_8dp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/add_client_order_fragment_tv_line2"
+            style="@style/margin_st_end"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/add_client_order_fragment_et_note"
+            android:layout_marginTop="@dimen/dim_32dp"
+            android:background="@color/grey" />
+
+        <LinearLayout
+            android:id="@+id/add_client_order_fragment_ll_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_client_order_fragment_tv_line2"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:layout_marginEnd="@dimen/dim_50dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/add_client_order_fragment_tv_increase"
+                android:layout_width="@dimen/dim_32dp"
+                android:layout_height="@dimen/dim_32dp"
+                android:background="@drawable/shap_circle"
+                android:contentDescription="@string/increase"
+                android:gravity="center"
+                android:text="@string/plus"
+                android:clickable="true"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/add_client_order_fragment_tv_qquantity"
+                style="@style/margin_st_end"
+                android:layout_width="@dimen/dim_80dp"
+                android:layout_height="@dimen/dim_20dp"
+                android:background="@drawable/shap_circle"
+                android:contentDescription="@string/quantity"
+                android:gravity="center"
+                android:text="@string/value"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/add_client_order_fragment_tv_decrease"
+                android:layout_width="@dimen/dim_32dp"
+                android:layout_height="@dimen/dim_32dp"
+                android:background="@drawable/shap_circle"
+                android:contentDescription="@string/decrease"
+                android:gravity="center"
+                android:text="@string/minus"
+                android:clickable="true"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/add_client_order_fragment_ib_cart"
+            style="@style/margin_st_end"
+            android:layout_marginTop="@dimen/dim_40dp"
+            android:layout_width="@dimen/dim_40dp"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_shopping_cart_solid"
+            android:contentDescription="@string/todo"
+            android:layout_marginBottom="@dimen/dim_16dp"/>
+    </LinearLayout>
+
+</ScrollView>

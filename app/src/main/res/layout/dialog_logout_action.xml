@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dim_310dp"
+    android:background="@drawable/shap_circl_rect_grey"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/logout_dialog_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/font_20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_100dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/logout_dialog_cancel"
+            android:layout_width="@dimen/album_dp_35"
+            android:layout_height="@dimen/album_dp_35"
+            android:layout_gravity="end"
+            android:background="@drawable/shap_circle"
+             />
+
+        <View
+            style="@style/margin_st_end"
+            android:layout_width="@dimen/dim_100dp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/logout_dialog_ok"
+            android:layout_width="@dimen/album_dp_35"
+            android:layout_height="@dimen/album_dp_35"
+            android:layout_gravity="start"
+            android:background="@drawable/shap_circle"
+             />
+    </LinearLayout>
+
+</LinearLayout>

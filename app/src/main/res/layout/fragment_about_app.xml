@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:text="@string/who_we_are"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fragment_about_app_text"
+        style="@style/margin_st_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_24dp"
+        android:background="@drawable/shap_rect_list"
+        android:paddingStart="@dimen/dim_8dp"
+        android:paddingEnd="@dimen/dim_8dp"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/album_sp_20" />
+</LinearLayout>

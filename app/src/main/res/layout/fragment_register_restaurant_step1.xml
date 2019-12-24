@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brooke_lark_unsplash"
+
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_restaurant_name"
+                style="@style/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/restaurant_name"
+                android:textColorHint="@color/white"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_name"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="textPersonName"
+                    android:backgroundTint="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_email"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/email"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_delivery_time"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/delivery_time"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="number"
+                    android:backgroundTint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/margin_16dp"
+                android:background="@drawable/shap_solid_rectangle">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_place"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/dim_8dp"
+                    android:paddingEnd="@dimen/dim_8dp"/>
+                <Spinner
+                    android:id="@+id/restaurant_register_fragment_step1_sp_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:layout_marginTop="@dimen/dim_8dp"
+                    android:dropDownSelector="@drawable/ic_arrow_down_solid"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/restaurant_register_fragment_step1_rl_region"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                style="@style/margin_16dp"
+                android:background="@drawable/shap_solid_rectangle">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_place"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/dim_8dp"
+                    android:paddingEnd="@dimen/dim_8dp"/>
+
+            <Spinner
+                android:id="@+id/restaurant_register_fragment_step1_sp_region"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_8dp" />
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_password"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/password"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_locked_"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="textPassword"
+                    android:backgroundTint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_confirm_password"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/confirm_password"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_locked_"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="textPassword"
+                    android:backgroundTint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_minimum_order"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/minimum_order"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_money_bill"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="number"
+                    android:backgroundTint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/restaurant_register_fragment_step1_ti_delivery_cost"
+                style="@style/margin_st_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:hint="@string/delivery_cost"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:drawableStart="@drawable/ic_money_bill"
+                    android:drawablePadding="@dimen/dim_8dp"
+                    android:inputType="number"
+                    android:backgroundTint="@color/white"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/restaurant_register_fragment_step1_bt_follow"
+                android:layout_width="@dimen/dim_200dp"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:background="@drawable/shap_bt_rectangle"
+                android:text="@string/follow"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

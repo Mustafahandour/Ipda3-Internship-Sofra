@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:text="@string/contact_us"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/font_20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/fragment_contact_us_et_name"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:background="@drawable/shap_rect_list"
+        android:hint="@string/full_name"
+        android:paddingStart="@dimen/dim_16dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/fragment_contact_us_et_mail"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:background="@drawable/shap_rect_list"
+        android:hint="@string/email"
+        android:paddingStart="@dimen/dim_16dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/fragment_contact_us_et_phone"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:background="@drawable/shap_rect_list"
+        android:hint="@string/phone"
+        android:paddingStart="@dimen/dim_16dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/fragment_contact_us_et_message"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_150dp"
+        android:background="@drawable/shap_rect_list"
+        android:hint="@string/user_message"
+        android:gravity="top"
+        android:paddingStart="@dimen/dim_16dp"
+        android:singleLine="false"/>
+    <RadioGroup
+        android:id="@+id/fragment_contact_us_rg"
+        android:layout_width="@dimen/dim_310dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:layout_height="@dimen/dim_50dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/fragment_contact_us_rb_complain"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/complain"
+            android:textColor="@color/purple"/>
+        <RadioButton
+            android:id="@+id/fragment_contact_us_rb_suggest"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/suggestion"
+            android:textColor="@color/purple"/>
+        <RadioButton
+            android:id="@+id/fragment_contact_us_rb_Query"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/complain"
+            android:textColor="@color/purple"/>
+    </RadioGroup>
+    <Button
+        android:id="@+id/fragment_contact_us_bt_send"
+        android:layout_width="@dimen/dim_200dp"
+        android:layout_height="@dimen/dim_50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        android:background="@drawable/shap_bt_rectangle"
+        android:text="@string/send"
+        android:textColor="@color/white" />
+</LinearLayout>
+</ScrollView>
