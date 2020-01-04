@@ -1,16 +1,20 @@
 package com.example.sofra.adapter.restaurant;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
+import com.example.sofra.data.model.order.Order;
 import com.example.sofra.data.model.order.OrderData;
 import com.example.sofra.view.activity.BaseActivity;
 
@@ -20,7 +24,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 public class RestaurantOrderAdapter extends RecyclerView.Adapter<RestaurantOrderAdapter.ViewHolder> {
@@ -72,11 +81,11 @@ public class RestaurantOrderAdapter extends RecyclerView.Adapter<RestaurantOrder
             holder.itemRestaurantOrderListBtOrderCall.setBackgroundResource(R.drawable.shap_circl_rect_red);
 
         } else if (orderDataList.get(position).getState().equals("accepted")) {
-            holder.itemRestaurantOrderListBtOrderAccept.setVisibility(View.GONE);
-            holder.itemRestaurantOrderListBtOrderCall.setText(activity.getString(R.string.delivery_confirm));
-            holder.itemRestaurantOrderListBtOrderCall.setBackgroundResource(R.drawable.shap_circl_rect_green);
-            holder.itemRestaurantOrderListBtOrderCancel.setText(activity.getString(R.string.cancel));
-            holder.itemRestaurantOrderListBtOrderCancel.setBackgroundResource(R.drawable.shap_circl_rect_deep_blue);
+            holder.itemRestaurantOrderListBtOrderCancel.setVisibility(View.GONE);
+            holder.itemRestaurantOrderListBtOrderAccept.setText(activity.getString(R.string.delivery_confirm));
+            holder.itemRestaurantOrderListBtOrderAccept.setBackgroundResource(R.drawable.shap_circl_rect_green);
+            holder.itemRestaurantOrderListBtOrderCall.setText(activity.getString(R.string.call));
+            holder.itemRestaurantOrderListBtOrderCall.setBackgroundResource(R.drawable.shap_circl_rect_red);
 
         } else if (orderDataList.get(position).getState().equals("delivered")) {
             holder.itemRestaurantOrderListBtOrderCall.setVisibility(View.GONE);
@@ -94,7 +103,69 @@ public class RestaurantOrderAdapter extends RecyclerView.Adapter<RestaurantOrder
     }
 
     private void setAction(ViewHolder holder, int position) {
+        holder.itemRestaurantOrderListBtOrderCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (orderDataList.get(position).getState().equals("delivered")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + orderDataList.get(position).getRestaurant().getPhone()));
+                    activity.startActivity(intent);
 
+                }
+
+            }
+        });
+
+        holder.itemRestaurantOrderListBtOrderAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (orderDataList.get(position).getState().equals("pending")) {
+                    getClient().getOrderRestaurantAccept(String.valueOf(orderDataList.get(position).getId()),LoadData(activity,"Restaurant_ApiToken")).enqueue(new Callback<Order>() {
+                        @Override
+                        public void onResponse(Call<Order> call, Response<Order> response) {
+                            if (response.body().getStatus() == 1) {
+                                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                orderDataList.remove(position);
+                                notifyDataSetChanged();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Order> call, Throwable t) {
+
+                        }
+                    });
+
+                }else if (orderDataList.get(position).getState().equals("accepted")){
+
+                    getClient().getOrderRestaurantConfirm(String.valueOf(orderDataList.get(position).getId()),LoadData(activity,"Restaurant_ApiToken")).enqueue(new Callback<Order>() {
+                        @Override
+                        public void onResponse(Call<Order> call, Response<Order> response) {
+                            if (response.body().getStatus() == 1) {
+                                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                orderDataList.remove(position);
+                                notifyDataSetChanged();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Order> call, Throwable t) {
+
+                        }
+                    });
+                }
+
+            }
+        });
+        holder.itemRestaurantOrderListBtOrderCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!orderDataList.get(position).getState().equals("pending")) {
+
+                }
+            }
+        });
     }
 
     @Override

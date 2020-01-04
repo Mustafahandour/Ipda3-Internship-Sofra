@@ -12,7 +12,7 @@
     <string name="delivery_time">Delivery Time</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="delivery_cost">Delivery Cost</string>
-    <string name="minimum_order">Minimum Order</string>
+    <string name="minimum_order">Minimum Charge</string>
     <string name="follow">Follow</string>
     <string name="contact_data">Contact Data</string>
     <string name="phone">Phone</string>
@@ -90,4 +90,9 @@
     <string name="price">Price</string>
     <string name="offer_price">Offer Price</string>
     <string name="city">City</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="confirm">Confirm</string>
+    <string name="happy_to_see_your_comment">Happy To See Your Comment</string>
+    <string name="add_comment_or_rating">Add Comment or Rating</string>
+    <string name="region">Region</string>
 </resources>

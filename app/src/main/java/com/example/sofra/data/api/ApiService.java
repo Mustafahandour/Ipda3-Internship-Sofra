@@ -1,6 +1,7 @@
 package com.example.sofra.data.api;
 
 import com.example.sofra.data.model.category.Category;
+import com.example.sofra.data.model.comment.Comment;
 import com.example.sofra.data.model.contactUs.ContactUs;
 import com.example.sofra.data.model.itemList.ItemList;
 import com.example.sofra.data.model.notification.Notification;
@@ -132,15 +133,15 @@ public interface ApiService {
     @POST("restaurant/update-category")
     @Multipart
     Call<Category> editCategory(@Part("name") RequestBody name,
-                                  @Part MultipartBody.Part photo,
-                                  @Part("api_token") RequestBody apiToken,
+                                @Part MultipartBody.Part photo,
+                                @Part("api_token") RequestBody apiToken,
                                 @Part("category_id") RequestBody categoryId);
 
 
     @POST("restaurant/delete-category")
     @FormUrlEncoded
-    Call<Category> deleteCategory( @Field("api_token") String apiToken,
-                                   @Field("category_id") String categoryId);
+    Call<Category> deleteCategory(@Field("api_token") String apiToken,
+                                  @Field("category_id") String categoryId);
 
     @GET("items")
     Call<ItemList> getItemList(@Query("restaurant_id") int restaurantId,
@@ -168,16 +169,48 @@ public interface ApiService {
     @GET("restaurant/notifications")
     Call<Notification> getRestaurantNotification(@Query("api_token") String apToken);
 
-@POST("contact")
-@FormUrlEncoded
-Call<ContactUs> getContact(@Field("name") String name,
-                           @Field("email") String email,
-                           @Field("phone") String phone,
-                           @Field("type") String type,
-                           @Field("content") String content);
+    @POST("contact")
+    @FormUrlEncoded
+    Call<ContactUs> getContact(@Field("name") String name,
+                               @Field("email") String email,
+                               @Field("phone") String phone,
+                               @Field("type") String type,
+                               @Field("content") String content);
+
     @GET("offers")
     Call<Offers> getOffers(@Query("restaurant_id") int restaurantId,
                            @Query("page") int page);
+
+
+    @GET("restaurant/reviews")
+    Call<Comment> getComment(@Query("restaurant_id") int restaurantId,
+                             @Query("page") int page);
+
+    @POST("client/decline-order")
+    @FormUrlEncoded
+    Call<Order> getOrderClientRemove(@Field("order_id") String order_id,
+                                     @Field("api_token") String apiToken);
+
+    @POST("client/confirm-order")
+    @FormUrlEncoded
+    Call<Order> getOrderClientConfirm(@Field("order_id") String order_id,
+                                      @Field("api_token") String apiToken);
+
+    @POST("restaurant/accept-order")
+    @FormUrlEncoded
+    Call<Order> getOrderRestaurantAccept(@Field("order_id") String order_id,
+                                         @Field("api_token") String apiToken);
+
+    @POST("restaurant/confirm-order")
+    @FormUrlEncoded
+    Call<Order> getOrderRestaurantConfirm(@Field("order_id") String order_id,
+                                          @Field("api_token") String apiToken);
+
+    @POST("restaurant/reject-order")
+    @FormUrlEncoded
+    Call<Order> getOrderRestaurantRejected(@Field("order_id") String order_id,
+                                           @Field("api_token") String apiToken,
+                                           @Field("refuse_reason") String refuseReason);
 }
 
 

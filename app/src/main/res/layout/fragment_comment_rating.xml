@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/margin_st_end"
+        android:layout_marginTop="@dimen/dim_50dp"
+        android:textColor="@color/purple"
+        android:gravity="center"
+        android:text="@string/happy_to_see_your_comment"/>
+    <Button
+        android:id="@+id/fragment_comment_rating_bt_add_comment"
+        android:layout_width="wrap_content"
+        android:paddingStart="@dimen/dim_8dp"
+        android:paddingEnd="@dimen/dim_8dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dim_24dp"
+        android:layout_height="@dimen/dim_40dp"
+        android:text="@string/add_comment_or_rating"
+        android:background="@drawable/shap_bt_rectangle"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_14sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_comment_rating_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dim_24dp"/>
+
+
+</LinearLayout>

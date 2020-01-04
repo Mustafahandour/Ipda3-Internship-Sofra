@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreferencesManger;
+import com.example.sofra.data.model.register.RegisterDataRestaurant;
 import com.example.sofra.data.model.register.RegisterRestaurant;
 import com.example.sofra.data.model.register.UserDataRestaurant;
 import com.example.sofra.helper.HelperMethod;
@@ -27,7 +28,9 @@ import retrofit2.Response;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreferencesManger.CLIENT_DATA;
 import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
+import static com.example.sofra.data.local.SharedPreferencesManger.SaveData;
 import static com.example.sofra.data.local.SharedPreferencesManger.loadUserData;
+import static com.example.sofra.data.local.SharedPreferencesManger.userData;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 
@@ -53,11 +56,20 @@ public class ClientProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile_client, container, false);
-getProfile();
+        getProfile();
         return view;
     }
 
     private void getProfile() {
+
+        loadUserData(getActivity(), CLIENT_DATA);
+
+
+        clientProfileFragmentEtName.setText(userData.getUserRestaurant().getName());
+        clientProfileFragmentEtMail.setText(userData.getUserRestaurant().getEmail());
+        clientProfileFragmentEtPhone.setText(userData.getUserRestaurant().getPhone());
+        clientProfileFragmentSpCity.setSelection(Integer.parseInt(userData.getUserRestaurant().getRegion().getCity().getName()));
+        clientProfileFragmentSpRegion.setSelection(Integer.parseInt(userData.getUserRestaurant().getRegion().getName()));
 
     }
 

@@ -93,26 +93,26 @@ public class AddClientOrderFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_client_order_fragment_tv_increase:
-                quantity++;
-                addClientOrderFragmentTvQquantity.setText(quantity);
+                quantity = quantity + 1;
+                addClientOrderFragmentTvQquantity.setText(String.valueOf(quantity));
 
                 break;
             case R.id.add_client_order_fragment_tv_decrease:
+
                 if (quantity > 1) {
-                    quantity--;
-                    addClientOrderFragmentTvQquantity.setText(quantity);
-
-
+                    quantity = quantity - 1;
+                    addClientOrderFragmentTvQquantity.setText(String.valueOf(quantity));
                 }
+
                 break;
             case R.id.add_client_order_fragment_ib_cart:
-                 roomDao = getInstance(getActivity()).roomDao();
+                roomDao = getInstance(getActivity()).roomDao();
                 Executors.newSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
-                        Item item = new Item(itemData.getId(),itemData.getRestaurantId(),
-                                itemData.getName(),addClientOrderFragmentTvQquantity.getText().toString(),itemData.getPhotoUrl(),
-                                addClientOrderFragmentEtNote.getText().toString());
+                        Item item = new Item(itemData.getId(), itemData.getRestaurantId(),
+                                itemData.getName(), addClientOrderFragmentTvQquantity.getText().toString(), itemData.getPhotoUrl()
+                                ,addClientOrderFragmentEtNote.getText().toString(),itemData.getPrice());
                         roomDao.add(item);
 
 

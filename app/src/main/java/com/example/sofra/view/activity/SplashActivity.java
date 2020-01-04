@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreferencesManger;
+import com.example.sofra.helper.HelperMethod;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +18,7 @@ import butterknife.OnClick;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_CLIENT;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_RESTAURANT;
 import static com.example.sofra.data.local.SharedPreferencesManger.saveUserType;
+import static com.example.sofra.helper.HelperMethod.onPermission;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -30,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+       onPermission(this);
 
     }
 
@@ -42,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.Splach_activity_bt_orderFood:
                 saveUserType(this, USER_TYPE_CLIENT);
-                Intent intent = new Intent(this,HomeActivity.class);
+                Intent intent = new Intent(this,AuthActivity.class);
                 startActivity(intent);
                 break;
             case R.id.Splach_activity_bt_buyFood:

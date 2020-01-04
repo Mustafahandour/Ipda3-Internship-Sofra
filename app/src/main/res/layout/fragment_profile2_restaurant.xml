@@ -20,7 +20,8 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_money_bill"
-            android:drawablePadding="@dimen/dim_8dp"/>
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
 
         <EditText
             android:id="@+id/restaurant_profile2_fragment_et_delivery_time"
@@ -29,29 +30,32 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_clock"
-            android:drawablePadding="@dimen/dim_8dp" />
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
 
         <Switch
             android:id="@+id/restaurant_profile2_fragment_switch_state"
             android:layout_width="110dp"
             android:layout_height="@dimen/dim_40dp"
-            android:text="@string/state"
-            android:paddingStart="@dimen/dim_4dp"
-            android:paddingEnd="@dimen/dim_8dp"
             android:layout_marginStart="@dimen/dim_32dp"
             android:layout_marginTop="@dimen/dim_32dp"
+            android:paddingStart="@dimen/dim_4dp"
+            android:paddingEnd="@dimen/dim_8dp"
+            android:text="@string/state"
             android:textColor="@color/purple"
             android:textSize="@dimen/font_18sp"
-            android:textStyle="bold"/>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/contact_data"
-    android:textStyle="bold"
-    android:textColor="@color/purple"
-    android:textSize="@dimen/album_sp_18"
-    android:layout_marginStart="@dimen/dim_16dp"
-    android:layout_marginTop="@dimen/dim_16dp"/>
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:text="@string/contact_data"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/album_sp_18"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/restaurant_profile2_fragment_et_phone"
             style="@style/margin_16dp"
@@ -59,7 +63,9 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_phone"
-            android:drawablePadding="@dimen/dim_8dp"/>
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
         <EditText
             android:id="@+id/restaurant_profile2_fragment_et_whatsApp"
             style="@style/margin_16dp"
@@ -67,7 +73,9 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_whatsapp"
-            android:drawablePadding="@dimen/dim_8dp"/>
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
         <Button
             android:id="@+id/client_profile_fragment_bt_edit"
             android:layout_width="@dimen/dim_200dp"

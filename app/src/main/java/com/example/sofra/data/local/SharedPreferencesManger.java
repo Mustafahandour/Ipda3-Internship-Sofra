@@ -3,6 +3,7 @@ package com.example.sofra.data.local;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+import com.example.sofra.data.model.register.RegisterDataRestaurant;
 import com.example.sofra.data.model.register.UserDataRestaurant;
 import com.google.gson.Gson;
 
@@ -17,6 +18,7 @@ public class SharedPreferencesManger {
     public static String USER_TYPE_RESTAURANT = "restaurant";
     public static String CLIENT_DATA = "CLIENT_DATA";
     public static String RESTAURANT_DATA = "RESTAURANT_DATA";
+    public static RegisterDataRestaurant userData = null;
 
 
     public static void setSharedPreferences(Activity activity) {
@@ -80,22 +82,21 @@ public class SharedPreferencesManger {
             editor.commit();
         }
     }
-    public static void saveClientData(Activity activity, UserDataRestaurant userType) {
-        SaveData(activity, CLIENT_DATA, userType);
+    public static void saveClientData(Activity activity, RegisterDataRestaurant userData) {
+        SaveData(activity, CLIENT_DATA, userData);
     }
-    public static void saveRestaurantData(Activity activity, UserDataRestaurant userType) {
-        SaveData(activity, RESTAURANT_DATA, userType);
+    public static void saveRestaurantData(Activity activity, RegisterDataRestaurant userData) {
+        SaveData(activity, RESTAURANT_DATA, userData);
     }
 
     public static void saveUserType(Activity activity, String userType) {
         SaveData(activity, USER_TYPE, userType);
     }
 
-    public static UserDataRestaurant loadUserData(Activity activity,String data_Key) {
-        UserDataRestaurant userData = null;
+    public static RegisterDataRestaurant loadUserData(Activity activity,String data_Key) {
 
         Gson gson = new Gson();
-        userData = gson.fromJson(LoadData(activity, data_Key), UserDataRestaurant.class);
+        userData = gson.fromJson(LoadData(activity, data_Key), RegisterDataRestaurant.class);
 
         return userData;
     }

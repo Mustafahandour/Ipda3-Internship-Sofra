@@ -55,16 +55,12 @@ public class ClientPreviousOrderFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order_client, container, false);
         unbinder = ButterKnife.bind(this, view);
-        try {
-            if (LoadData(getActivity(),USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
-                getRestaurantData();
-            }
+
+
+
             getClientData();
 
 
-        }catch (Exception e){
-
-        }
         return view;
     }
 
@@ -92,7 +88,7 @@ public class ClientPreviousOrderFragment extends BaseFragment {
     }
 
     private void getClientPreviousOrder(int page) {
-        getClient().getClientOrder("qXc6GqvS1SGjNKfdbyt87EWR2owTCPo80fkQFgIwg9QFjGPx9yDDu9mZzG7M", "completed", page).enqueue(new Callback<Order>() {
+        getClient().getClientOrder(LoadData(getActivity(),"Client_ApiToken"), "completed", page).enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
                 if (response.body().getStatus() == 1) {

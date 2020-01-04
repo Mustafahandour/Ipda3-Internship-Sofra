@@ -6,8 +6,8 @@
 
     <RelativeLayout
         style="@style/margin_st_end"
-        android:layout_width="250dp"
-        android:layout_height="@dimen/dim_200dp"
+        android:layout_width="300dp"
+        android:layout_height="170dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/shap_rect_list">
 
@@ -47,7 +47,9 @@
             android:layout_height="@dimen/dim_40dp"
             android:layout_below="@+id/item_restaurant_list_ll"
             android:layout_marginStart="55dp"
-           android:clickable="false"
+            android:isIndicator="true"
+            android:scaleX=".5"
+            android:scaleY=".5"
             android:layout_marginTop="@dimen/dim_8dp" />
         <TextView
             android:id="@+id/item_restaurant_list_tv_mim_order"
@@ -73,8 +75,8 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="@dimen/dim_16dp"
         android:background="@drawable/shap_circle"
        >

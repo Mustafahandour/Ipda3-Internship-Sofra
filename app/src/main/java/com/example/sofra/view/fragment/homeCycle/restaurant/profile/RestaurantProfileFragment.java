@@ -26,7 +26,9 @@ import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
+import static com.example.sofra.data.local.SharedPreferencesManger.SaveData;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
+import static com.example.sofra.helper.HelperMethod.replace;
 
 
 public class RestaurantProfileFragment extends Fragment {
@@ -51,42 +53,39 @@ public class RestaurantProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile_restaurant, container, false);
-showProfile();
+           showProfile();
         return view;
     }
 
     private void showProfile() {
-        getClient().getRestaurantProfile(LoadData(getActivity(),"Restaurant_ApiToken")).enqueue(new Callback<RegisterRestaurant>() {
-            @Override
-            public void onResponse(Call<RegisterRestaurant> call, Response<RegisterRestaurant> response) {
-                clientProfileFragmentEtName.setText(response.body().getData().getUserRestaurant().getName());
-                clientProfileFragmentEtMail.setText(response.body().getData().getUserRestaurant().getEmail());
-                clientProfileFragmentSpCity.getSelectedItemPosition();
-                clientProfileFragmentSpRegion.getSelectedItemPosition();
-                onLoadImageFromUrl(clientProfileFragmentIbProfilePic,response.body().getData().getUserRestaurant().getPhotoUrl(),getActivity());
-            }
 
-            @Override
-            public void onFailure(Call<RegisterRestaurant> call, Throwable t) {
 
-            }
-        });
+
+
+
+//
+//                clientProfileFragmentEtName.setText( LoadData(getActivity(), "Restaurant_Name"));
+//                clientProfileFragmentEtMail.setText(   LoadData(getActivity(), "Restaurant_Mail"));
+//                clientProfileFragmentSpCity.setSelection(Integer.parseInt(LoadData(getActivity(), "Restaurant_City")));
+//                clientProfileFragmentSpRegion.setSelection(Integer.parseInt(LoadData(getActivity(), "Restaurant_Region")));
+//                clientProfileFragmentEtMinimumCharge.setText(LoadData(getActivity(), "Restaurant_MinimumCharger"));
+//                onLoadImageFromUrl(clientProfileFragmentIbProfilePic, LoadData(getActivity(), "Restaurant_Photo"),getActivity());
 
     }
 
     @OnClick(R.id.client_profile_fragment_bt_follow)
     public void onViewClicked() {
-        String name = clientProfileFragmentEtName.getText().toString().trim();
-        String email = clientProfileFragmentEtMail.getText().toString().trim();
-        String regionId = String.valueOf(getClient().getRegion(clientProfileFragmentSpRegion.getSelectedItemPosition()));
-        String minimumCharge = clientProfileFragmentEtMinimumCharge.getText().toString().trim();
+//        String name = clientProfileFragmentEtName.getText().toString().trim();
+//        String email = clientProfileFragmentEtMail.getText().toString().trim();
+//        String regionId = String.valueOf(getClient().getRegion(clientProfileFragmentSpRegion.getSelectedItemPosition()));
+//        String minimumCharge = clientProfileFragmentEtMinimumCharge.getText().toString().trim();
 
 RestaurantProfile2Fragment restaurantProfile2Fragment =new RestaurantProfile2Fragment();
-        restaurantProfile2Fragment.name = name;
-        restaurantProfile2Fragment.email = email;
-        restaurantProfile2Fragment.regionId = regionId;
-        restaurantProfile2Fragment.minimumCharge = minimumCharge;
-        HelperMethod.replace(restaurantProfile2Fragment, getActivity().getSupportFragmentManager(), R.id.activity_fl_container);
+//        restaurantProfile2Fragment.name = name;
+//        restaurantProfile2Fragment.email = email;
+//        restaurantProfile2Fragment.regionId = regionId;
+//        restaurantProfile2Fragment.minimumCharge = minimumCharge;
+        replace(restaurantProfile2Fragment, getActivity().getSupportFragmentManager(), R.id.activity_fl_container);
 
 
     }

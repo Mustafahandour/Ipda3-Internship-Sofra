@@ -8,11 +8,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
+import com.example.sofra.data.model.order.Order;
 import com.example.sofra.data.model.order.OrderData;
 import com.example.sofra.view.activity.BaseActivity;
 
@@ -22,7 +24,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 public class ClientOrderAdapter extends RecyclerView.Adapter<ClientOrderAdapter.ViewHolder> {
@@ -85,8 +92,47 @@ public class ClientOrderAdapter extends RecyclerView.Adapter<ClientOrderAdapter.
     }
 
     private void setAction(ViewHolder holder, int position) {
+holder.itemCurrentOrderListBtOrderConfirm.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if (orderDataList.get(position).getState().equals("pending")) {
+            getClient().getOrderClientRemove(String.valueOf(orderDataList.get(position).getId()),LoadData(activity,"Client_ApiToken")).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    if (response.body().getStatus()==1) {
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        orderDataList.remove(position);
+                        notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+
+                }
+            });
 
 
+        }else if (orderDataList.get(position).getState().equals("accepted") ){
+
+            getClient().getOrderClientConfirm(String.valueOf(orderDataList.get(position).getId()),LoadData(activity,"Client_ApiToken")).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    if (response.body().getStatus()==1) {
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        orderDataList.remove(position);
+                        notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+
+                }
+            });
+}
+
+    }});
     }
 
     @Override

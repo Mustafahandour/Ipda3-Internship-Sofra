@@ -93,6 +93,7 @@ public class RestaurantNewOrderFragment extends BaseFragment {
                 if (response.body().getStatus() == 1) {
                     maxPage = response.body().getData().getLastPage();
                     newOrderDataList.addAll(response.body().getData().getData());
+                    restaurantOrderAdapter.notifyDataSetChanged();
                 }
             }
 

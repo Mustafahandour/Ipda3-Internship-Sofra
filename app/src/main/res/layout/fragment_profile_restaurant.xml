@@ -37,7 +37,8 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_name"
-            android:drawablePadding="@dimen/dim_8dp"/>
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp"/>
 
         <EditText
             android:id="@+id/client_profile_fragment_et_mail"
@@ -47,7 +48,8 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_mail"
-            android:drawablePadding="@dimen/dim_8dp" />
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp"/>
 
 
 
@@ -103,7 +105,8 @@
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_money_bill"
-            android:drawablePadding="@dimen/dim_8dp" />
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
         <Button
             android:id="@+id/client_profile_fragment_bt_follow"
             android:layout_width="@dimen/dim_200dp"

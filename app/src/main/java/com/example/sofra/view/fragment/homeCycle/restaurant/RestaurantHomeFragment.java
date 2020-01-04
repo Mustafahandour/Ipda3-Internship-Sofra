@@ -112,6 +112,7 @@ public class RestaurantHomeFragment extends BaseFragment {
             @Override
             public void onResponse(Call<Category> call, Response<Category> response) {
                 if (response.body().getStatus() == 1) {
+                    maxPage = response.body().getData().getLastPage();
                     categoryDataList.addAll(response.body().getData().getData());
 
                     restaurantCategoryAdapter.notifyDataSetChanged();

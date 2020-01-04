@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sofra.R;
+import com.example.sofra.view.fragment.authCycle.LoginFragment;
+import com.example.sofra.view.fragment.homeCycle.client.CartFragment;
 import com.example.sofra.view.fragment.homeCycle.client.clientMore.MoreClientFragment;
 import com.example.sofra.view.fragment.homeCycle.restaurant.restaurantMore.MoreRestaurantFragment;
 import com.example.sofra.view.fragment.homeCycle.general.OrderListFragment;
@@ -19,9 +21,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.sofra.data.local.SharedPreferencesManger.CLIENT_DATA;
 import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE;
+import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_CLIENT;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_RESTAURANT;
+import static com.example.sofra.data.local.SharedPreferencesManger.loadUserData;
 import static com.example.sofra.helper.HelperMethod.replace;
 
 public class HomeActivity extends BaseActivity {
@@ -47,11 +52,11 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-     gethome();
+     getHome();
 
     }
 
-    private void gethome() {
+    private void getHome() {
         String userType = LoadData(this, USER_TYPE);
         if (userType.equals(USER_TYPE_RESTAURANT)) {
             RestaurantHomeFragment restaurantHomeFragment = new RestaurantHomeFragment();
@@ -70,11 +75,13 @@ public class HomeActivity extends BaseActivity {
                 replace(notificationFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
                 break;
             case R.id.activity_home_ib_shopping_cart:
+                CartFragment cartFragment = new CartFragment();
+                replace(cartFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;
             case R.id.activity_home_tv_home:
 
 
-                   gethome();
+                   getHome();
 
                 break;
             case R.id.activity_home_tv_list:
@@ -86,9 +93,20 @@ public class HomeActivity extends BaseActivity {
                     if (LoadData(this,USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
                         RestaurantProfileFragment restaurantProfileFragment = new RestaurantProfileFragment();
                         replace(restaurantProfileFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
-                    }
-                    ClientProfileFragment clientProfileFragment = new ClientProfileFragment();
-                    replace(clientProfileFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+
+                    }else {
+                     //   if (loadUserData(this,CLIENT_DATA) != null) {
+                            ClientProfileFragment clientProfileFragment = new ClientProfileFragment();
+                            replace(clientProfileFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+
+                    //    }else {
+                     //       LoginFragment loginFragment = new LoginFragment();
+                     //       replace(loginFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+
+                        }
+
+                   // }
+
                 }catch (Exception e){
 
                 }

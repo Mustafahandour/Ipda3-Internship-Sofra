@@ -14,16 +14,17 @@ public class Item {
     private String quantity;
     private String image;
     private String note;
+    private String cost;
 
 
-
-    public Item(int itemId, String restaurantId, String itemName, String quantity, String image, String note) {
+    public Item(int itemId, String restaurantId, String itemName, String quantity, String image, String note, String cost) {
         this.itemId = itemId;
         this.restaurantId = restaurantId;
         this.itemName = itemName;
         this.quantity = quantity;
         this.image = image;
         this.note = note;
+        this.cost = cost;
     }
 
     public int getId() {
@@ -80,5 +81,13 @@ public class Item {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 }

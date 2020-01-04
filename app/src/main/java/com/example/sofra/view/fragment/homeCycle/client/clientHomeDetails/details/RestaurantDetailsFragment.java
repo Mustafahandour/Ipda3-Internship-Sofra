@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.general.GeneralViewPagerAdapter;
+import com.example.sofra.data.model.register.UserDataRestaurant;
 import com.example.sofra.data.model.restaurantList.RestaurantListData;
 import com.example.sofra.view.fragment.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -40,9 +41,15 @@ public class RestaurantDetailsFragment extends BaseFragment {
         generalViewPagerAdapter.addPager(foodMenuFragment, getString(R.string.menu_list));
 
         CommentAndRatingFragment commentAndRatingFragment = new CommentAndRatingFragment();
+        commentAndRatingFragment.id = showRestaurantData.getId();
         generalViewPagerAdapter.addPager(commentAndRatingFragment, getString(R.string.comment_rating));
 
         StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
+        storeInfoFragment.state = showRestaurantData.getAvailability();
+//        storeInfoFragment.city =showRestaurantData.;
+//        storeInfoFragment.region =showRestaurantData.;
+        storeInfoFragment.minimumCharge =showRestaurantData.getMinimumCharger();
+        storeInfoFragment.deliveryCost = showRestaurantData.getDeliveryCost();
         generalViewPagerAdapter.addPager(storeInfoFragment, getString(R.string.store_info));
 
         restaurantDetailsFragmentVpPager.setAdapter(generalViewPagerAdapter);
