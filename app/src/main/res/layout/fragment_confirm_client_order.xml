@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        style="@style/margin_16dp"
+        android:text="@string/order_details"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/fragment_confirm_client_order_et_note"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_150dp"
+        style="@style/margin_16dp"
+        android:gravity="start"
+        android:paddingStart="@dimen/dim_16dp"
+        android:paddingEnd="@dimen/dim_16dp"
+        android:background="@drawable/shap_circl_rect_grey"
+        android:hint="@string/add_notes"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_14sp"
+        android:textStyle="bold"
+        android:text="@string/delivery_address"
+        android:layout_gravity="start"
+        android:textColor="@color/purple"
+        style="@style/margin_16dp"
+        />
+    <TextView
+        android:id="@+id/fragment_confirm_client_order_tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold"
+        android:textColor="@color/pink"
+        style="@style/margin_16dp"
+        android:gravity="start"/>
+    <RadioGroup
+        android:id="@+id/fragment_confirm_client_order_rg"
+        style="@style/margin_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:button="@drawable/radio_check"
+            android:id="@+id/fragment_confirm_client_order_rb_pay_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/pay_cash_on_delivery"
+            android:layout_gravity="start"/>
+        <RadioButton
+            android:button="@drawable/radio_check"
+            android:id="@+id/fragment_confirm_client_order_rb_note_pay_online"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pay_online"
+            android:layout_gravity="end"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/fragment_confirm_client_order_tv_total"
+        style="@style/margin_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:textColor="@color/pink"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/fragment_confirm_client_order_tv_delivery_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:textColor="@color/pink"
+        android:layout_marginTop="@dimen/dim_8dp"
+        style="@style/margin_st_end"
+        android:gravity="start"/>
+    <TextView
+        android:id="@+id/fragment_confirm_client_order_tv_total_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fon_24sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:textColor="@color/pink"
+        android:layout_marginTop="@dimen/dim_8dp"
+        style="@style/margin_st_end"
+        android:gravity="start"/>
+
+    <Button
+        android:id="@+id/fragment_confirm_client_order_bt_confirm"
+        android:layout_width="@dimen/dim_150dp"
+        android:layout_height="@dimen/dim_40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        android:background="@drawable/shap_bt_rectangle"
+        android:text="@string/confirm_order"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>
+</ScrollView>

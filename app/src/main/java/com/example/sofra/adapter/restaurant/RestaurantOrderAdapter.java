@@ -106,7 +106,7 @@ public class RestaurantOrderAdapter extends RecyclerView.Adapter<RestaurantOrder
         holder.itemRestaurantOrderListBtOrderCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (orderDataList.get(position).getState().equals("delivered")) {
+                if (!orderDataList.get(position).getState().equals("delivered")) {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + orderDataList.get(position).getRestaurant().getPhone()));
                     activity.startActivity(intent);
 

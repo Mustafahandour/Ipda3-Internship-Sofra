@@ -68,5 +68,11 @@
         android:textColor="@color/purple"
         android:textStyle="bold"
         android:textSize="@dimen/fon_24sp"/>
+    <TextView
+        style="@style/margin_st_end"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/album_dp_1"
+        android:background="@color/light_grey"/>
 
 </LinearLayout>

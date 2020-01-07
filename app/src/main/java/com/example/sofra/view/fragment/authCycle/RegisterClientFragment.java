@@ -137,7 +137,7 @@ public class RegisterClientFragment extends BaseFragment {
         String password = clientRegisterFragmentTiPassword.getEditText().getText().toString();
         String passwordConfirmation = clientRegisterFragmentTiConfirmPassword.getEditText().getText().toString();
         String phone = clientRegisterFragmentTiPhone.getEditText().getText().toString();
-        String regionId = String.valueOf(getClient().getRegion(clientRegisterFragmentSpRegion.getSelectedItemPosition()));
+        String regionId = String.valueOf(regionAdapter.selectedId);
 
 
         getClient().getRegisterClient(convertToRequestBody(name), convertToRequestBody(email),
@@ -148,10 +148,8 @@ public class RegisterClientFragment extends BaseFragment {
             public void onResponse(Call<RegisterRestaurant> call, Response<RegisterRestaurant> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-                        response.body().getData().getUserRestaurant();
                         Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);
-                        openDialog();
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -165,24 +163,11 @@ public class RegisterClientFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<RegisterRestaurant> call, Throwable t) {
-                Log.d(TAG, "onFailure: ");
             }
         });
     }
-    private void openDialog() {
-
-        // custom dialog
-        final Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_register_success);
-        dialog.show();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                dialog.dismiss();
-//            }
-//        }, Dialog_DISPLAY_LENGTH);
 
 
-    }
+
 }
 

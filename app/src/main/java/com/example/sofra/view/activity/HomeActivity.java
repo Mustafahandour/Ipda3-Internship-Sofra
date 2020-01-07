@@ -26,7 +26,6 @@ import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_CLIENT;
 import static com.example.sofra.data.local.SharedPreferencesManger.USER_TYPE_RESTAURANT;
-import static com.example.sofra.data.local.SharedPreferencesManger.loadUserData;
 import static com.example.sofra.helper.HelperMethod.replace;
 
 public class HomeActivity extends BaseActivity {
@@ -52,7 +51,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-     getHome();
+        getHome();
 
     }
 
@@ -60,8 +59,8 @@ public class HomeActivity extends BaseActivity {
         String userType = LoadData(this, USER_TYPE);
         if (userType.equals(USER_TYPE_RESTAURANT)) {
             RestaurantHomeFragment restaurantHomeFragment = new RestaurantHomeFragment();
-            replace(restaurantHomeFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
-        }else {
+            replace(restaurantHomeFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
+        } else {
             ClientHomeFragment restaurantListFragment = new ClientHomeFragment();
             replace(restaurantListFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
         }
@@ -76,51 +75,52 @@ public class HomeActivity extends BaseActivity {
                 break;
             case R.id.activity_home_ib_shopping_cart:
                 CartFragment cartFragment = new CartFragment();
-                replace(cartFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                replace(cartFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
                 break;
             case R.id.activity_home_tv_home:
 
 
-                   getHome();
+                getHome();
 
                 break;
             case R.id.activity_home_tv_list:
                 OrderListFragment OrderListFragment = new OrderListFragment();
-                replace(OrderListFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                replace(OrderListFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
                 break;
             case R.id.activity_home_tv_profile:
                 try {
-                    if (LoadData(this,USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
+                    if (LoadData(this, USER_TYPE) == (USER_TYPE_RESTAURANT)) {
                         RestaurantProfileFragment restaurantProfileFragment = new RestaurantProfileFragment();
-                        replace(restaurantProfileFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                        replace(restaurantProfileFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
 
-                    }else {
-                     //   if (loadUserData(this,CLIENT_DATA) != null) {
-                            ClientProfileFragment clientProfileFragment = new ClientProfileFragment();
-                            replace(clientProfileFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                    } else {
+                        //   if (loadUserData(this,CLIENT_DATA) != null) {
+                        ClientProfileFragment clientProfileFragment = new ClientProfileFragment();
+                        replace(clientProfileFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
 
-                    //    }else {
-                     //       LoginFragment loginFragment = new LoginFragment();
-                     //       replace(loginFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                        //    }else {
+                        //       LoginFragment loginFragment = new LoginFragment();
+                        //       replace(loginFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
 
-                        }
+                    }
 
-                   // }
+                    // }
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 break;
             case R.id.activity_home_tv_more:
                 try {
-                    if (LoadData(this,USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
+                    if (LoadData(this, USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
                         MoreRestaurantFragment moreRestaurantFragment = new MoreRestaurantFragment();
-                        replace(moreRestaurantFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
-                    }
+                        replace(moreRestaurantFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
+                    }else {
                     MoreClientFragment moreClientFragment = new MoreClientFragment();
-                    replace(moreClientFragment,getSupportFragmentManager(),R.id.nav_host_fragment);
+                    replace(moreClientFragment, getSupportFragmentManager(), R.id.nav_host_fragment);
+                    }
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 break;

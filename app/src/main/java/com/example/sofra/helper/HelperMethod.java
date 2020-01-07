@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
 import android.text.Html;
+import android.text.InputType;
 import android.text.Layout;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,6 +34,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreferencesManger;
+import com.example.sofra.data.model.DateTxt;
 import com.yanzhenjie.album.Action;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
@@ -65,22 +68,22 @@ public class HelperMethod {
         transaction.commit();
     }
 
-//    public static void showCalender(Context context, String title, final TextView text_view_data, final DateTxt data1) {
-//        DatePickerDialog mDatePicker = new DatePickerDialog(context, AlertDialog.THEME_HOLO_DARK, new DatePickerDialog.OnDateSetListener() {
-//            public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
-//                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
-//                DecimalFormat mFormat = new DecimalFormat("00", symbols);
-//                String data = selectedYear + "-" + mFormat.format(Double.valueOf((selectedMonth + 1))) + "-" + mFormat.format(Double.valueOf(selectedDay));
-//                data1.setDate_txt(data);
-//                data1.setDay(mFormat.format(Double.valueOf(selectedDay)));
-//                data1.setMonth(mFormat.format(Double.valueOf(selectedMonth + 1)));
-//                data1.setYear(String.valueOf(selectedYear));
-//                text_view_data.setText(data);
-//            }
-//        }, Integer.parseInt(data1.getYear()), Integer.parseInt(data1.getMonth()) - 1, Integer.parseInt(data1.getDay()));
-//        mDatePicker.setTitle(title);
-//        mDatePicker.show();
-//    }
+    public static void showCalender(Context context, String title, final TextView text_view_data, final DateTxt data1) {
+        DatePickerDialog mDatePicker = new DatePickerDialog(context, AlertDialog.THEME_HOLO_DARK, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
+                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+                DecimalFormat mFormat = new DecimalFormat("00", symbols);
+                String data = selectedYear + "-" + mFormat.format(Double.valueOf((selectedMonth + 1))) + "-" + mFormat.format(Double.valueOf(selectedDay));
+                data1.setDate_txt(data);
+                data1.setDay(mFormat.format(Double.valueOf(selectedDay)));
+                data1.setMonth(mFormat.format(Double.valueOf(selectedMonth + 1)));
+                data1.setYear(String.valueOf(selectedYear));
+                text_view_data.setText(data);
+            }
+        }, Integer.parseInt(data1.getYear()), Integer.parseInt(data1.getMonth()) - 1, Integer.parseInt(data1.getDay()));
+        mDatePicker.setTitle(title);
+        mDatePicker.show();
+    }
 
     public static Date convertDateString(String date) {
         try {
@@ -95,20 +98,20 @@ public class HelperMethod {
             return null;
         }
     }
+    public static DateTxt convertStringToDateTxtModel(String date) {
+        try {
+            Date date1 = convertDateString(date);
+            String day = (String) DateFormat.format("dd", date1); // 20
+            String monthNumber = (String) DateFormat.format("MM", date1); // 06
+            String year = (String) DateFormat.format("yyyy", date1); // 2013
 
-//    public static DateTxt convertStringToDateTxtModel(String date) {
-//        try {
-//            Date date1 = convertDateString(date);
-//            String day = (String) DateFormat.format("dd", date1); // 20
-//            String monthNumber = (String) DateFormat.format("MM", date1); // 06
-//            String year = (String) DateFormat.format("yyyy", date1); // 2013
-//
-//            return new DateTxt(day, monthNumber, year, date);
-//
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
+            return new DateTxt(day, monthNumber, year, date);
+
+        } catch (Exception e) {
+            return null;
+        }
+
+     }
 
     public static void onLoadImageFromUrl(ImageView imageView, String URl, Context context) {
         Glide.with(context)
@@ -174,7 +177,7 @@ public class HelperMethod {
         if (pathImageFile != null) {
             File file = new File(pathImageFile);
             RequestBody reqFileselect = RequestBody.create(MediaType.parse("image/*"), file);
-            MultipartBody.Part Imagebody = MultipartBody.Part.createFormData(Key, file.getName(), reqFileselect);
+            MultipartBody.Part Imagebody = MultipartBody.Part.createFormData(Key, "image", reqFileselect);
             return Imagebody;
         } else {
             return null;
@@ -215,7 +218,12 @@ public class HelperMethod {
                 })
                 .start();
     }
+    public static void getListener(EditText editText ) {
+        editText.setClickable(true);
+        editText.setFocusable(false);
+        editText.setInputType(InputType.TYPE_NULL);
 
+    }
 
     public static void onPermission(Activity activity) {
         String[] perms = {

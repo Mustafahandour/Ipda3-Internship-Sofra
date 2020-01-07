@@ -15,6 +15,7 @@ import com.example.sofra.adapter.client.CartAdapter;
 import com.example.sofra.data.local.room.Item;
 import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.view.fragment.BaseFragment;
+import com.example.sofra.view.fragment.homeCycle.client.clientHomeDetails.ConfirmClientOrderFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static com.example.sofra.data.local.room.RoomManger.getInstance;
+import static com.example.sofra.helper.HelperMethod.replace;
 
 public class CartFragment extends BaseFragment {
 
@@ -41,6 +43,7 @@ public class CartFragment extends BaseFragment {
     private List<Item> items;
     private RoomDao roomDao;
     private double total;
+    private ConfirmClientOrderFragment confirmClientOrderFragment;
 
     public CartFragment() {
         // Required empty public constructor
@@ -105,6 +108,10 @@ public class CartFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fragment_cart_bt_confirm:
+                 confirmClientOrderFragment = new ConfirmClientOrderFragment();
+                confirmClientOrderFragment.tCost = total;
+
+                replace(confirmClientOrderFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;
             case R.id.fragment_cart_bt_more:
                 break;

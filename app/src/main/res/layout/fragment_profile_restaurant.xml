@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/client_profile_fragment_rl_profile_pic"
+            android:id="@+id/restaurant_profile_fragment_rl_profile_pic"
             style="@style/margin_st_end"
             android:layout_width="@dimen/dim_150dp"
             android:layout_height="@dimen/dim_150dp"
@@ -22,7 +22,7 @@
             android:gravity="center_horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/client_profile_fragment_ib_profile_pic"
+                android:id="@+id/restaurant_profile_fragment_ib_profile_pic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -31,7 +31,7 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/client_profile_fragment_et_name"
+            android:id="@+id/restaurant_profile_fragment_et_name"
             style="@style/margin_16dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_50dp"
@@ -41,7 +41,7 @@
             android:paddingEnd="@dimen/dim_16dp"/>
 
         <EditText
-            android:id="@+id/client_profile_fragment_et_mail"
+            android:id="@+id/restaurant_profile_fragment_et_mail"
 
             style="@style/margin_16dp"
             android:layout_width="match_parent"
@@ -69,14 +69,14 @@
                 android:src="@drawable/ic_place" />
 
             <Spinner
-                android:id="@+id/client_profile_fragment_sp_city"
+                android:id="@+id/restaurant_profile_fragment_sp_city"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:layout_marginTop="@dimen/dim_8dp" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/client_profile_fragment_rl_region"
+            android:id="@+id/restaurant_profile_fragment_rl_region"
             style="@style/margin_16dp"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -92,14 +92,14 @@
                 android:src="@drawable/ic_place" />
 
             <Spinner
-                android:id="@+id/client_profile_fragment_sp_region"
+                android:id="@+id/restaurant_profile_fragment_sp_region"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:layout_marginTop="@dimen/dim_8dp" />
 
         </RelativeLayout>
         <EditText
-            android:id="@+id/client_profile_fragment_et_minimum_charge"
+            android:id="@+id/restaurant_profile_fragment_et_minimum_charge"
             style="@style/margin_16dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_50dp"
@@ -108,7 +108,7 @@
             android:paddingStart="@dimen/dim_16dp"
             android:paddingEnd="@dimen/dim_16dp" />
         <Button
-            android:id="@+id/client_profile_fragment_bt_follow"
+            android:id="@+id/restaurant_profile_fragment_bt_follow"
             android:layout_width="@dimen/dim_200dp"
             android:layout_height="@dimen/dim_50dp"
             android:layout_gravity="center_horizontal"

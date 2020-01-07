@@ -87,7 +87,63 @@ public class GeneralRequest {
             }
         });
     }
+    public static void getSpinnerData(final Spinner spinner, final CustomSpinnerAdapter adapter,
+                                      final String hint, Call<Region> method, final int selectedId1) {
+        method.enqueue(new Callback<Region>() {
+            @Override
+            public void onResponse(Call<Region> call, Response<Region> response) {
+                try {
 
+                    if (response.body().getStatus() == 1) {
+                        adapter.setData(response.body().getData(), hint);
+                        spinner.setAdapter(adapter);
+                        int position = 0;
+                        for (int i = 0; i < response.body().getData().size(); i++) {
+                            if (response.body().getData().get(i).getId() == selectedId1) {
+                                position = i + 1;
+                                break;
+                            }
+                        }
+                        adapter.setData(response.body().getData(), hint);
+                        spinner.setAdapter(adapter);
+                        spinner.setSelection(position);
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Region> call, Throwable t) {
+
+            }
+        });
+    }
+    public static void getSpinnerData(final Spinner spinner, final CustomSpinnerAdapter adapter,
+                                      final String hint, Call<Region> method, AdapterView.OnItemSelectedListener listener,final int selectedId1) {
+        method.enqueue(new Callback<Region>() {
+            @Override
+            public void onResponse(Call<Region> call, Response<Region> response) {
+                try {
+
+                    if (response.body().getStatus() == 1) {
+                        adapter.setData(response.body().getData(), hint);
+                        spinner.setAdapter(adapter);
+                        spinner.setOnItemSelectedListener(listener);
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Region> call, Throwable t) {
+
+            }
+        });
+    }
 
 }
 

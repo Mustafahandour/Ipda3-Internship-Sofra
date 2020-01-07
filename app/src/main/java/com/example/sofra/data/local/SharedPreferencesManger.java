@@ -18,7 +18,8 @@ public class SharedPreferencesManger {
     public static String USER_TYPE_RESTAURANT = "restaurant";
     public static String CLIENT_DATA = "CLIENT_DATA";
     public static String RESTAURANT_DATA = "RESTAURANT_DATA";
-    public static RegisterDataRestaurant userData = null;
+    public static RegisterDataRestaurant userClientData = null;
+    public static RegisterDataRestaurant userRestaurantData = null;
 
 
     public static void setSharedPreferences(Activity activity) {
@@ -82,23 +83,32 @@ public class SharedPreferencesManger {
             editor.commit();
         }
     }
-    public static void saveClientData(Activity activity, RegisterDataRestaurant userData) {
-        SaveData(activity, CLIENT_DATA, userData);
+
+    public static void saveClientData(Activity activity, RegisterDataRestaurant userClientData) {
+        SaveData(activity, CLIENT_DATA, userClientData);
     }
-    public static void saveRestaurantData(Activity activity, RegisterDataRestaurant userData) {
-        SaveData(activity, RESTAURANT_DATA, userData);
+
+    public static void saveRestaurantData(Activity activity, RegisterDataRestaurant userRestaurantData) {
+        SaveData(activity, RESTAURANT_DATA, userRestaurantData);
     }
 
     public static void saveUserType(Activity activity, String userType) {
         SaveData(activity, USER_TYPE, userType);
     }
 
-    public static RegisterDataRestaurant loadUserData(Activity activity,String data_Key) {
+    public static RegisterDataRestaurant loadClientData(Activity activity, String data_Key) {
 
         Gson gson = new Gson();
-        userData = gson.fromJson(LoadData(activity, data_Key), RegisterDataRestaurant.class);
+        userClientData = gson.fromJson(LoadData(activity, data_Key), RegisterDataRestaurant.class);
 
-        return userData;
+        return userClientData;
+    }
+    public static RegisterDataRestaurant loadRestaurantData(Activity activity, String data_Key) {
+
+        Gson gson = new Gson();
+        userRestaurantData = gson.fromJson(LoadData(activity, data_Key), RegisterDataRestaurant.class);
+
+        return userRestaurantData;
     }
 
     public static void clean(Activity activity) {

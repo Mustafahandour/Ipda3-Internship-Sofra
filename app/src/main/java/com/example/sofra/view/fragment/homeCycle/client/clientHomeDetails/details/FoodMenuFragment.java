@@ -47,7 +47,7 @@ public class FoodMenuFragment extends BaseFragment {
     private ClientHomeCategoryAdapter restaurantDetailsCategoryAdapter;
     private ClientHomeItemsAdapter restaurantDetailsItemsAdapter;
     private LinearLayoutManager linearLayoutManagerItems, linearLayoutManagerCategory;
-    public int clientCategoryId;
+    public int clientCategoryId = -1;
 
     public FoodMenuFragment() {
         // Required empty public constructor
@@ -77,7 +77,7 @@ public class FoodMenuFragment extends BaseFragment {
                         categoryDataList.addAll(response.body().getData());
                         linearLayoutManagerCategory = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                         fragmentMenuFoodRvCategory.setLayoutManager(linearLayoutManagerCategory);
-                        restaurantDetailsCategoryAdapter = new ClientHomeCategoryAdapter(getActivity(), categoryDataList , FoodMenuFragment.this);
+                        restaurantDetailsCategoryAdapter = new ClientHomeCategoryAdapter(getActivity(), categoryDataList, FoodMenuFragment.this);
                         fragmentMenuFoodRvCategory.setAdapter(restaurantDetailsCategoryAdapter);
                         restaurantDetailsCategoryAdapter.notifyDataSetChanged();
                     }
@@ -125,7 +125,16 @@ public class FoodMenuFragment extends BaseFragment {
                     if (response.body().getStatus() == 1) {
                         if (page == 1) {
 
+                            onEndLess.previous_page = 1;
+                            onEndLess.current_page = 1;
+                            onEndLess.previousTotal = 0;
+
+                            itemDataList = new ArrayList<>();
+
+                            restaurantDetailsItemsAdapter = new ClientHomeItemsAdapter(getActivity(), itemDataList);
+                            fragmentMenuFoodRvItems.setAdapter(restaurantDetailsItemsAdapter);
                         }
+
                         maxPage = response.body().getData().getLastPage();
                         itemDataList.addAll(response.body().getData().getData());
 

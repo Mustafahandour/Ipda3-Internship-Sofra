@@ -95,4 +95,16 @@
     <string name="happy_to_see_your_comment">Happy To See Your Comment</string>
     <string name="add_comment_or_rating">Add Comment or Rating</string>
     <string name="region">Region</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="order_details">Order Details</string>
+    <string name="pay_cash_on_delivery">Pay Cash On Delivery</string>
+    <string name="pay_online">Pay Online</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="my_offers">My Offers</string>
+    <string name="add_offers">Add Offers</string>
+    <string name="offer_name">Offer Name</string>
+    <string name="offer_des">Offer Description</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
 </resources>

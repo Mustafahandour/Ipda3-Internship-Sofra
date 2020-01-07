@@ -12,20 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.sofra.R;
+import com.example.sofra.data.model.register.RegisterDataRestaurant;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
-import static com.example.sofra.data.local.SharedPreferencesManger.LoadData;
+import static com.example.sofra.data.local.SharedPreferencesManger.RESTAURANT_DATA;
+import static com.example.sofra.data.local.SharedPreferencesManger.loadRestaurantData;
 
 
 public class RestaurantProfile2Fragment extends Fragment {
 
 
-    public String name;
-    public String email;
-    public String regionId;
-    public String minimumCharge;
     @BindView(R.id.restaurant_profile2_fragment_et_delivery_cost)
     EditText restaurantProfile2FragmentEtDeliveryCost;
     @BindView(R.id.restaurant_profile2_fragment_et_delivery_time)
@@ -38,27 +38,31 @@ public class RestaurantProfile2Fragment extends Fragment {
     EditText restaurantProfile2FragmentEtWhatsApp;
     @BindView(R.id.client_profile_fragment_bt_edit)
     Button clientProfileFragmentBtEdit;
+    private Unbinder unbinder;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_profile2_restaurant, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile2_restaurant, container, false);
+        unbinder = ButterKnife.bind(this, view);
+
         getProfile2();
-        return root;
+        return view;
     }
 
     private void getProfile2() {
+        RegisterDataRestaurant registerDataRestaurant = loadRestaurantData(getActivity(), RESTAURANT_DATA);
 
 
-
-        restaurantProfile2FragmentEtDeliveryCost.setText(  LoadData(getActivity(), "Restaurant_DeliveryCost"));
-        restaurantProfile2FragmentEtDeliveryTime.setText(LoadData(getActivity(), "Restaurant_DeliveryTime"));
-        restaurantProfile2FragmentEtPhone.setText(LoadData(getActivity(), "Restaurant_Phone"));
-        restaurantProfile2FragmentEtWhatsApp.setText(LoadData(getActivity(), "Restaurant_WhatsApp"));
-        if (LoadData(getActivity(), "Restaurant_Availability").equals("open")) {
+        restaurantProfile2FragmentEtDeliveryCost.setText(registerDataRestaurant.getUserRestaurant().getDeliveryCost());
+        restaurantProfile2FragmentEtDeliveryTime.setText(registerDataRestaurant.getUserRestaurant().getDeliveryTime());
+        restaurantProfile2FragmentEtPhone.setText(registerDataRestaurant.getUserRestaurant().getPhone());
+        restaurantProfile2FragmentEtWhatsApp.setText(registerDataRestaurant.getUserRestaurant().getWhatsapp());
+        if (registerDataRestaurant.getUserRestaurant().getActivated().equals("open")) {
             restaurantProfile2FragmentSwitchState.isChecked();
         }
     }
+
 
 
     @OnClick(R.id.client_profile_fragment_bt_edit)

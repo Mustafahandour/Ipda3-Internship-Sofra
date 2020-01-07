@@ -84,7 +84,6 @@ public class LoginFragment extends BaseFragment {
                 String mail = loginFragmentTiEmail.getEditText().getText().toString();
                 String password = loginFragmentTiPassword.getEditText().getText().toString();
                 if (LoadData(getActivity(), USER_TYPE).equals(USER_TYPE_RESTAURANT)) {
-                    saveRestaurantData(getActivity(),registerDataRestaurant);
                     getRestaurantLogin(mail, password);
 
                 } else {
@@ -116,17 +115,13 @@ public class LoginFragment extends BaseFragment {
                 try {
 
                     if (response.body().getStatus() == 1) {
-                        saveClientData(getActivity(),registerDataRestaurant);
+                        saveClientData(getActivity(),  response.body().getData());
 
-                        SaveData(getActivity(), "Client_ApiToken",response.body().getData().getApiToken());
-//                        SaveData(getActivity(), "Client_Name",response.body().getData().getUserRestaurant().getName());
-//                        SaveData(getActivity(), "Client_Mail",response.body().getData().getUserRestaurant().getEmail());
-//                        SaveData(getActivity(), "Client_Phone",response.body().getData().getUserRestaurant().getPhone());
-//                        SaveData(getActivity(), "Client_City",response.body().getData().getUserRestaurant().getRegionId());
-//                        SaveData(getActivity(), "Client_Region",response.body().getData().getUserRestaurant().getRegion());
+                        SaveData(getActivity(), "Client_ApiToken", response.body().getData().getApiToken());
 
-                        Intent intent = new Intent(getActivity(),HomeActivity.class);
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);
+                        getActivity().finish();
 
                     }
                     Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
@@ -152,19 +147,10 @@ public class LoginFragment extends BaseFragment {
                 try {
 
                     if (response.body().getStatus() == 1) {
-                        SaveData(getActivity(), "Restaurant_Id",response.body().getData().getUserRestaurant().getId());
-                        SaveData(getActivity(), "Restaurant_ApiToken",response.body().getData().getApiToken());
-//                        SaveData(getActivity(), "Restaurant_Name",response.body().getData().getUserRestaurant().getName());
-//                        SaveData(getActivity(), "Restaurant_Mail",response.body().getData().getUserRestaurant().getEmail());
-//                        SaveData(getActivity(), "Restaurant_City",response.body().getData().getUserRestaurant().getRegionId());
-//                        SaveData(getActivity(), "Restaurant_Region",response.body().getData().getUserRestaurant().getRegion());
-//                        SaveData(getActivity(), "Restaurant_DeliveryCost",response.body().getData().getUserRestaurant().getDeliveryCost());
-//                        SaveData(getActivity(), "Restaurant_MinimumCharger",response.body().getData().getUserRestaurant().getMinimumCharger());
-//                        SaveData(getActivity(), "Restaurant_DeliveryTime",response.body().getData().getUserRestaurant().getDeliveryTime());
-//                        SaveData(getActivity(), "Restaurant_Availability",response.body().getData().getUserRestaurant().getAvailability());
-//                        SaveData(getActivity(), "Restaurant_Phone",response.body().getData().getUserRestaurant().getPhone());
-//                        SaveData(getActivity(), "Restaurant_WhatsApp",response.body().getData().getUserRestaurant().getWhatsapp());
-//                        SaveData(getActivity(), "Restaurant_Photo",response.body().getData().getUserRestaurant().getPhotoUrl());
+                        saveRestaurantData(getActivity(), response.body().getData());
+
+                        SaveData(getActivity(), "Restaurant_Id", response.body().getData().getUserRestaurant().getId());
+                        SaveData(getActivity(), "Restaurant_ApiToken", response.body().getData().getApiToken());
 
                         Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);

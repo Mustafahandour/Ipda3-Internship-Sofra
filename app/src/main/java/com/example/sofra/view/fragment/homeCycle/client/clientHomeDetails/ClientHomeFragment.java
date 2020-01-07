@@ -48,12 +48,15 @@ public class ClientHomeFragment extends BaseFragment {
     ImageButton homeFragmentIbSearch;
     private ClientHomeAdapter restaurantsListAdapter;
     List<RestaurantListData> showRestaurantDataList = new ArrayList<>();
+    List<RestaurantListData> newShowRestaurantDataList;
+
 
     private int maxPAge;
     private OnEndLess onEndLess;
     private Unbinder unbinder;
 
     private boolean filter = false;
+    private CustomSpinnerAdapter customSpinnerAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class ClientHomeFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         homeFragmentRvMenu.setLayoutManager(linearLayoutManager);
-        CustomSpinnerAdapter customSpinnerAdapter = new CustomSpinnerAdapter(getActivity());
+        customSpinnerAdapter = new CustomSpinnerAdapter(getActivity());
         getSpinnerData(homeFragmentSpCity, customSpinnerAdapter, getString(R.string.city), getClient().getCity());
 
 
@@ -89,10 +92,14 @@ public class ClientHomeFragment extends BaseFragment {
                     if (maxPAge != 0 && current_page != 1) {
                         onEndLess.previous_page = onEndLess.current_page;
 
-
-
+                        if (filter) {
+                            getFilter(current_page);
+                        }else {
 
                             getRestaurantList(current_page);
+                        }
+
+
                         }
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
@@ -109,18 +116,23 @@ public class ClientHomeFragment extends BaseFragment {
 
     }
 
-    private void getFilter() {
+    private void getFilter(int page) {
         filter = true;
-        onEndLess.previousTotal = 0;
-        onEndLess.previous_page = 1;
-        onEndLess.current_page = 1;
         String key = homeFragmentEtPickRestaurant.getText().toString();
-        int city = homeFragmentSpCity.getSelectedItemPosition();
-        getClient().getRestaurantFilter(key, city).enqueue(new Callback<RestaurantList>() {
+        int city = customSpinnerAdapter.selectedId;
+        getClient().getRestaurantFilter(key, city, page).enqueue(new Callback<RestaurantList>() {
             @Override
             public void onResponse(Call<RestaurantList> call, Response<RestaurantList> response) {
                 try {
                     if (response.body().getStatus() == 1) {
+                        if (page == 1) {
+                            onEndLess.previousTotal = 0;
+                            onEndLess.previous_page = 1;
+                            onEndLess.current_page = 1;
+                            showRestaurantDataList = new ArrayList<>();
+                            restaurantsListAdapter = new ClientHomeAdapter(getActivity(), showRestaurantDataList);
+                            homeFragmentRvMenu.setAdapter(restaurantsListAdapter);
+                        }
                         showRestaurantDataList.addAll(response.body().getData().getData());
                         restaurantsListAdapter.notifyDataSetChanged();
                     }
@@ -168,7 +180,7 @@ public class ClientHomeFragment extends BaseFragment {
 
     @OnClick(R.id.home_fragment_ib_search)
     public void onViewClicked() {
-        getFilter();
+        getFilter(1);
 
     }
 }

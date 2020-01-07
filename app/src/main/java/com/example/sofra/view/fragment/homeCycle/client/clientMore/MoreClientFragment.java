@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.example.sofra.helper.HelperMethod.getListener;
 import static com.example.sofra.helper.HelperMethod.replace;
 
 public class MoreClientFragment extends BaseFragment {
@@ -58,21 +59,16 @@ public class MoreClientFragment extends BaseFragment {
 
         unbinder = ButterKnife.bind(this, view);
      //   getClicked();
-getListener(fragmentMoreClientEtOffers);
-getListener(fragmentMoreClientEtAboutApp);
-getListener(fragmentMoreClientEtContactUs);
+//getListener(fragmentMoreClientEtOffers);
+//getListener(fragmentMoreClientEtAboutApp);
+//getListener(fragmentMoreClientEtContactUs);
         return view;
     }
 
 
 
 
-    private void getListener(EditText editText ) {
-        editText.setClickable(true);
-        editText.setFocusable(false);
-        editText.setInputType(InputType.TYPE_NULL);
 
-    }
 
 
     @Override

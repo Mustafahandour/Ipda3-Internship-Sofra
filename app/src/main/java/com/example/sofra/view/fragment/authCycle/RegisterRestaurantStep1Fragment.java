@@ -98,7 +98,7 @@ public class RegisterRestaurantStep1Fragment extends BaseFragment {
                 String email = restaurantRegisterFragmentStep1TiEmail.getEditText().getText().toString().trim();
                 String password = restaurantRegisterFragmentStep1TiPassword.getEditText().getText().toString().trim();
                 String passwordConfirmation = restaurantRegisterFragmentStep1TiConfirmPassword.getEditText().getText().toString().trim();
-                String regionId = String.valueOf(getClient().getRegion(restaurantRegisterFragmentStep1SpRegion.getSelectedItemPosition()));
+                String regionId = String.valueOf(regionAdapter.selectedId);
                 String deliveryCost = restaurantRegisterFragmentStep1TiDeliveryCost.getEditText().getText().toString().trim();
                 String minimumCharge = restaurantRegisterFragmentStep1TiMinimumOrder.getEditText().getText().toString().trim();
                 String deliveryTime = restaurantRegisterFragmentStep1TiDeliveryTime.getEditText().getText().toString().trim();

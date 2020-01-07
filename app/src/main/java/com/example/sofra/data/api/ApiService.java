@@ -13,6 +13,8 @@ import com.example.sofra.data.model.register.RegisterRestaurant;
 import com.example.sofra.data.model.resetPassword.ResetPassword;
 import com.example.sofra.data.model.restaurantList.RestaurantList;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -114,7 +116,8 @@ public interface ApiService {
 
     @GET("restaurants")
     Call<RestaurantList> getRestaurantFilter(@Query("keyword") String keyword,
-                                             @Query("city_id") int cityId);
+                                             @Query("city_id") int cityId,
+                                             @Query("page") int page);
 
     @GET("categories")
     Call<ClientCategory> getCategory(@Query("restaurant_id") String restaurantId);
@@ -211,6 +214,35 @@ public interface ApiService {
     Call<Order> getOrderRestaurantRejected(@Field("order_id") String order_id,
                                            @Field("api_token") String apiToken,
                                            @Field("refuse_reason") String refuseReason);
+
+    @POST("client/new-order")
+    @FormUrlEncoded
+    Call<Order> getOrderDone(@Field("restaurant_id") int restaurantId,
+                             @Field("note") String note,
+                             @Field("address") String address,
+                             @Field("payment_method_id") int payment_method_id,
+                             @Field("phone") String phone,
+                             @Field("name") String name,
+                             @Field("api_token") String apiToken,
+                             @Field("items")List<Integer> items,
+                             @Field("quantities")List<Integer> quantities,
+                             @Field("notes")List<String> notes);
+    @GET("restaurant/my-offers")
+    Call<Offers> getRestaurantOffers(@Query("api_token") String apiToken,
+                             @Query("page") int page);
+
+
+
+    @POST("restaurant/new-offer")
+    @Multipart
+    Call<Offers> getNewRestaurantOffers(@Part("name") RequestBody name,
+                                        @Part("description") RequestBody description,
+                                        @Part("price") RequestBody price,
+                                        @Part("offer_price") RequestBody offer_price,
+                                        @Part("starting_at") RequestBody starting_at,
+                                        @Part("ending_at") RequestBody ending_at,
+                                        @Part("api_token") RequestBody apiToken,
+                                        @Part MultipartBody.Part photo);
 }
 
 

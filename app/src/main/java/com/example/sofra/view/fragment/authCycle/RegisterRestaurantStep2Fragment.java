@@ -41,6 +41,7 @@ import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 import static com.example.sofra.helper.HelperMethod.openGallery;
+import static com.example.sofra.helper.HelperMethod.replace;
 
 public class RegisterRestaurantStep2Fragment extends BaseFragment {
 
@@ -64,6 +65,7 @@ public class RegisterRestaurantStep2Fragment extends BaseFragment {
     public String deliveryCost;
     public String minimumCharge;
     public String deliveryTime;
+    private long Dialog_DISPLAY_LENGTH= 2000;
 
     public RegisterRestaurantStep2Fragment() {
         // Required empty public constructor
@@ -101,6 +103,8 @@ public class RegisterRestaurantStep2Fragment extends BaseFragment {
                 break;
             case R.id.restaurant_register_fragment_step2_bt_login:
                 getSellerRegister();
+                LoginFragment loginFragment = new LoginFragment();
+                replace(loginFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;
         }
     }
@@ -118,7 +122,8 @@ public class RegisterRestaurantStep2Fragment extends BaseFragment {
             public void onResponse(Call<RegisterRestaurant> call, Response<RegisterRestaurant> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-                        openDialog();
+                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
                     }
 
                     Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
@@ -132,26 +137,25 @@ public class RegisterRestaurantStep2Fragment extends BaseFragment {
             @Override
             public void onFailure(Call<RegisterRestaurant> call, Throwable t) {
 
-                Log.d(TAG, "onFailure: ");
             }
         });
 
     }
 
-    private void openDialog() {
-
-        // custom dialog
-        final Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_register_success);
-        dialog.show();
+//    private void openDialog() {
+//
+//        // custom dialog
+//        final Dialog dialog = new Dialog(getActivity());
+//        dialog.setContentView(R.layout.dialog_register_success);
+//        dialog.show();
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
 //                dialog.dismiss();
 //            }
 //        }, Dialog_DISPLAY_LENGTH);
-
-
-    }
+//
+//
+//    }
 }
 
