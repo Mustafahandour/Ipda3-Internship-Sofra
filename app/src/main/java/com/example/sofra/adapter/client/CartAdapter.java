@@ -18,6 +18,7 @@ import com.example.sofra.data.model.offers.OffersData;
 import com.example.sofra.data.model.order.ItemData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
+import com.example.sofra.view.fragment.homeCycle.client.clientHomeDetails.ConfirmClientOrderFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,14 +62,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     private void setData(ViewHolder holder, int position) {
         holder.itemCartListTvName.setText(items.get(position).getItemName());
-        holder.itemCartListTvCost.setText(items.get(position).getCost());
-        holder.itemCartListTvQuantity.setText(items.get(position).getQuantity());
+        holder.itemCartListTvCost.setText(String.valueOf(items.get(position).getCost()) );
+        holder.itemCartListTvQuantity.setText(String.valueOf(items.get(position).getQuantity()));
         HelperMethod.onLoadImageFromUrl(holder.itemCartListIvImage,items.get(position).getImage(),activity);
 
     }
 
     private void setAction(ViewHolder holder, int position) {
-        //holder.itemCartListTvIncrease.setO
+
+
     }
 
     @Override
@@ -80,8 +82,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.item_cart_list_tv_increase:
-//                quantity = quantity + 1;
-//                roomDao = getInstance(activity).roomDao();
+                quantity = quantity + 1;
+                roomDao = getInstance(activity).roomDao();
 //                Executors.newSingleThreadExecutor().execute(new Runnable() {
 //                    @Override
 //                    public void run() {
@@ -91,11 +93,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 //                        roomDao.onUpdate(item);
 //
 //
-//                    }}
+//                    }});
                 break;
             case R.id.item_cart_list_tv_decrease:
                 break;
             case R.id.item_cart_list_bt_cancel:
+                roomDao = getInstance(activity).roomDao();
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        roomDao.delete();
+                        notifyDataSetChanged();
+                    }
+                });
                 break;
         }
     }

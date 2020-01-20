@@ -110,9 +110,9 @@ public class AddClientOrderFragment extends BaseFragment {
                 Executors.newSingleThreadExecutor().execute(new Runnable() {
                     @Override
                     public void run() {
-                        Item item = new Item(itemData.getId(), itemData.getRestaurantId(),
-                                itemData.getName(), addClientOrderFragmentTvQquantity.getText().toString(), itemData.getPhotoUrl()
-                                ,addClientOrderFragmentEtNote.getText().toString(),itemData.getPrice());
+                        Item item = new Item(itemData.getId(), Integer.parseInt(itemData.getRestaurantId()),
+                                itemData.getName(), Integer.parseInt(addClientOrderFragmentTvQquantity.getText().toString()), itemData.getPhotoUrl()
+                                ,addClientOrderFragmentEtNote.getText().toString(),Double.parseDouble(itemData.getPrice()));
                         roomDao.add(item);
 
 

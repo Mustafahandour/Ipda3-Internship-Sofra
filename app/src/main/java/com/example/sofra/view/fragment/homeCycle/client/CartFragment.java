@@ -14,6 +14,7 @@ import com.example.sofra.R;
 import com.example.sofra.adapter.client.CartAdapter;
 import com.example.sofra.data.local.room.Item;
 import com.example.sofra.data.local.room.RoomDao;
+import com.example.sofra.data.model.order.ItemData;
 import com.example.sofra.view.fragment.BaseFragment;
 import com.example.sofra.view.fragment.homeCycle.client.clientHomeDetails.ConfirmClientOrderFragment;
 
@@ -81,7 +82,7 @@ public class CartFragment extends BaseFragment {
 
                         total = 0.0;
                         for (int i = 0; i < items.size(); i++) {
-                            total = total + Double.parseDouble(items.get(i).getQuantity()) * Double.parseDouble(items.get(i).getCost());
+                            total = total + items.get(i).getQuantity() * items.get(i).getCost();
                         }
                         fragmentCartTvTCost.setText(String.valueOf(total));
 
@@ -109,7 +110,7 @@ public class CartFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.fragment_cart_bt_confirm:
                  confirmClientOrderFragment = new ConfirmClientOrderFragment();
-                confirmClientOrderFragment.tCost = total;
+
 
                 replace(confirmClientOrderFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;

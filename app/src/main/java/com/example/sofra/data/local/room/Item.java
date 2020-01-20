@@ -9,15 +9,14 @@ public class Item {
     @PrimaryKey(autoGenerate = true)
     int id;
     private int itemId;
-    private String restaurantId;
+    private int restaurantId;
     private String itemName;
-    private String quantity;
+    private int quantity;
     private String image;
     private String note;
-    private String cost;
+    private double cost;
 
-
-    public Item(int itemId, String restaurantId, String itemName, String quantity, String image, String note, String cost) {
+    public Item(int itemId, int restaurantId, String itemName, int quantity, String image, String note, double cost ) {
         this.itemId = itemId;
         this.restaurantId = restaurantId;
         this.itemName = itemName;
@@ -25,14 +24,6 @@ public class Item {
         this.image = image;
         this.note = note;
         this.cost = cost;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getItemId() {
@@ -43,11 +34,11 @@ public class Item {
         this.itemId = itemId;
     }
 
-    public String getRestaurantId() {
+    public int getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(String restaurantId) {
+    public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
     }
 
@@ -59,11 +50,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -83,11 +74,14 @@ public class Item {
         this.note = note;
     }
 
-    public String getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
+
+
+
 }

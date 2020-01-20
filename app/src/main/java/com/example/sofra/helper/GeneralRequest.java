@@ -130,6 +130,7 @@ public class GeneralRequest {
                     if (response.body().getStatus() == 1) {
                         adapter.setData(response.body().getData(), hint);
                         spinner.setAdapter(adapter);
+                        spinner.setSelection(selectedId1);
                         spinner.setOnItemSelectedListener(listener);
                     }
 

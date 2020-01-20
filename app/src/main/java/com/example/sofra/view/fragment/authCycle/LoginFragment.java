@@ -169,5 +169,9 @@ public class LoginFragment extends BaseFragment {
             }
         });
     }
+
+    @Override
+    public void onBack() {
+getActivity().finish();    }
 }
 

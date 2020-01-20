@@ -89,6 +89,7 @@ public class ClientProfileFragment extends Fragment {
         clientProfileFragmentEtName.setText(registerDataRestaurant.getUserRestaurant().getName());
         clientProfileFragmentEtMail.setText(registerDataRestaurant.getUserRestaurant().getEmail());
         clientProfileFragmentEtPhone.setText(registerDataRestaurant.getUserRestaurant().getPhone());
+
         onLoadImageFromUrl(clientProfileFragmentIbProfilePic,registerDataRestaurant.getUserRestaurant().getPhotoUrl(),getActivity());
 
 

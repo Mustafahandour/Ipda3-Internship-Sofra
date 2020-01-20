@@ -12,8 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sofra.R;
+import com.example.sofra.data.local.room.Item;
+import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.data.model.order.Order;
+import com.example.sofra.data.model.order.Restaurant;
+import com.example.sofra.data.model.register.RegisterDataRestaurant;
+import com.example.sofra.data.model.restaurantList.RestaurantListData;
 import com.example.sofra.view.fragment.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,14 +33,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreferencesManger.CLIENT_DATA;
+import static com.example.sofra.data.local.SharedPreferencesManger.loadClientData;
+import static com.example.sofra.data.local.room.RoomManger.getInstance;
 
 public class ConfirmClientOrderFragment extends BaseFragment {
 
-    public double tCost;
+    public double total = 0.0 , totalCost = 0.0;
+    public List<Item> itemData;
+
+    public List<Integer> item = new ArrayList<>();
+    public List<String> note = new ArrayList<>();
+    public List<Integer> quantity = new ArrayList<>();
+    public String name;
+    public String dCost;
     @BindView(R.id.fragment_confirm_client_order_et_note)
     EditText fragmentConfirmClientOrderEtNote;
-    @BindView(R.id.fragment_confirm_client_order_tv_address)
-    TextView fragmentConfirmClientOrderTvAddress;
+    @BindView(R.id.fragment_confirm_client_order_et_address)
+    EditText fragmentConfirmClientOrderEtAddress;
     @BindView(R.id.fragment_confirm_client_order_rb_pay_cash)
     RadioButton fragmentConfirmClientOrderRbPayCash;
     @BindView(R.id.fragment_confirm_client_order_rb_note_pay_online)
@@ -47,7 +66,8 @@ public class ConfirmClientOrderFragment extends BaseFragment {
     @BindView(R.id.fragment_confirm_client_order_rg)
     RadioGroup fragmentConfirmClientOrderRg;
     private Unbinder unbinder;
-    private int id;
+    private int payMethodId;
+    private RoomDao roomDao;
 
     public ConfirmClientOrderFragment() {
         // Required empty public constructor
@@ -59,17 +79,18 @@ public class ConfirmClientOrderFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_confirm_client_order, container, false);
         unbinder = ButterKnife.bind(this, view);
-        fragmentConfirmClientOrderTvTotal.setText(getString(R.string.total_cost) + "   "+(int) tCost);
+        roomDao= getInstance(getActivity()).roomDao();
+        setData();
         fragmentConfirmClientOrderRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.fragment_confirm_client_order_rb_pay_cash:
-                        id = 1;
-
+                        payMethodId = 1;
                         break;
                     case R.id.fragment_confirm_client_order_tv_total:
-                        id = 2;
+                        payMethodId = 2;
+
                         break;
                 }
 
@@ -77,6 +98,22 @@ public class ConfirmClientOrderFragment extends BaseFragment {
         });
 
         return view;
+    }
+
+    private void setData() {
+
+        for (int i = 0; i < itemData.size(); i++) {
+
+            total = total + itemData.get(i).getQuantity()* itemData.get(i).getCost();
+            note.add(itemData.get(i).getNote());
+            quantity.add(itemData.get(i).getQuantity());
+            item.add(itemData.get(i).getItemId());
+
+        }
+        fragmentConfirmClientOrderTvTotal.setText(getString(R.string.t_cost) + " " +total);
+       fragmentConfirmClientOrderTvDeliveryCost.setText(getString(R.string.delivery_cost)+"  "+ dCost);
+        totalCost = Double.parseDouble(total + dCost);
+        fragmentConfirmClientOrderTvTotalCost.setText(getString(R.string.total_cost));
     }
 
     @Override
@@ -92,29 +129,45 @@ public class ConfirmClientOrderFragment extends BaseFragment {
 
     @OnClick(R.id.fragment_confirm_client_order_bt_confirm)
     public void onViewClicked() {
-    //    getOrderDone();
+             getOrderDone();
+             delAll();
     }
 
-//    private void getOrderDone() {
-//        getClient().getOrderDone().enqueue(new Callback<Order>() {
-//            @Override
-//            public void onResponse(Call<Order> call, Response<Order> response) {
-//                try {
-//                    if (response.body().getStatus() == 1) {
-//                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//                    }
-//                    Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//
-//                } catch (Exception e) {
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Order> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+
+    private void getOrderDone() {
+        String details = fragmentConfirmClientOrderEtNote.getText().toString().trim();
+        String address = fragmentConfirmClientOrderEtAddress.getText().toString().trim();
+        RegisterDataRestaurant registerDataRestaurant = loadClientData(getActivity(), CLIENT_DATA);
+
+        getClient().getOrderDone(itemData.get(0).getRestaurantId(), details,address, payMethodId,registerDataRestaurant.getUserRestaurant().getPhone(),
+                registerDataRestaurant.getUserRestaurant().getName(),registerDataRestaurant.getApiToken(),item,quantity,note).enqueue(new Callback<Order>() {
+            @Override
+            public void onResponse(Call<Order> call, Response<Order> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Order> call, Throwable t) {
+
+            }
+        });
+    }
+    private void delAll() {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                roomDao.delete();
+            }
+        });
+    }
+
 }
 

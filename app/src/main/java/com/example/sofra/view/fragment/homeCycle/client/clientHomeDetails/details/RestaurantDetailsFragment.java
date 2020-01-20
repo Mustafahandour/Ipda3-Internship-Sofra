@@ -12,6 +12,7 @@ import com.example.sofra.adapter.general.GeneralViewPagerAdapter;
 import com.example.sofra.data.model.register.UserDataRestaurant;
 import com.example.sofra.data.model.restaurantList.RestaurantListData;
 import com.example.sofra.view.fragment.BaseFragment;
+import com.example.sofra.view.fragment.homeCycle.client.clientHomeDetails.ConfirmClientOrderFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import static com.example.sofra.data.local.SharedPreferencesManger.SaveData;
@@ -46,16 +47,16 @@ public class RestaurantDetailsFragment extends BaseFragment {
 
         StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
         storeInfoFragment.state = showRestaurantData.getAvailability();
-//        storeInfoFragment.city =showRestaurantData.;
-//        storeInfoFragment.region =showRestaurantData.;
+
         storeInfoFragment.minimumCharge =showRestaurantData.getMinimumCharger();
         storeInfoFragment.deliveryCost = showRestaurantData.getDeliveryCost();
+
         generalViewPagerAdapter.addPager(storeInfoFragment, getString(R.string.store_info));
 
         restaurantDetailsFragmentVpPager.setAdapter(generalViewPagerAdapter);
         restaurantDetailsFragmentTlTab.setupWithViewPager(restaurantDetailsFragmentVpPager);
-        int resId = showRestaurantData.getId();
-        SaveData(getActivity(), "Id", resId);
+        ConfirmClientOrderFragment confirmClientOrderFragment = new ConfirmClientOrderFragment();
+        confirmClientOrderFragment.dCost = showRestaurantData.getDeliveryCost();
         return view;
     }
 

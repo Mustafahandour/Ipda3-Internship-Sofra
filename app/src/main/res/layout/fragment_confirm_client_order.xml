@@ -38,13 +38,15 @@
         android:textColor="@color/purple"
         style="@style/margin_16dp"
         />
-    <TextView
-        android:id="@+id/fragment_confirm_client_order_tv_address"
+    <EditText
+        android:id="@+id/fragment_confirm_client_order_et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/fon_24sp"
         android:textStyle="bold"
         android:textColor="@color/pink"
+        android:paddingStart="@dimen/dim_8dp"
+        android:paddingEnd="@dimen/dim_8dp"
         style="@style/margin_16dp"
         android:gravity="start"/>
     <RadioGroup
@@ -54,21 +56,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <RadioButton
-            android:button="@drawable/radio_check"
             android:id="@+id/fragment_confirm_client_order_rb_pay_cash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/pay_cash_on_delivery"
             android:layout_gravity="start"/>
+
         <RadioButton
-            android:button="@drawable/radio_check"
             android:id="@+id/fragment_confirm_client_order_rb_note_pay_online"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pay_online"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="@string/pay_online" />
     </RadioGroup>
 
     <TextView
