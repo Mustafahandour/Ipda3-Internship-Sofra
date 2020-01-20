@@ -21,4 +21,6 @@ public interface RoomDao {
 
     @Query("select * from Item")
     List<Item> getAll();
+    @Query("DELETE FROM Item")
+    void deleteAll();
 }

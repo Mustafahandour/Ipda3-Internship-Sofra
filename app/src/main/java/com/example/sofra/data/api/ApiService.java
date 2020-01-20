@@ -224,9 +224,9 @@ public interface ApiService {
                              @Field("phone") String phone,
                              @Field("name") String name,
                              @Field("api_token") String apiToken,
-                             @Field("items")List<Integer> items,
-                             @Field("quantities")List<Integer> quantities,
-                             @Field("notes")List<String> notes);
+                             @Field("items[]")List<Integer> items,
+                             @Field("quantities[]")List<Integer> quantities,
+                             @Field("notes[]")List<String> notes);
     @GET("restaurant/my-offers")
     Call<Offers> getRestaurantOffers(@Query("api_token") String apiToken,
                              @Query("page") int page);

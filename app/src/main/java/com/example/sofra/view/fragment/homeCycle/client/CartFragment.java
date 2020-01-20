@@ -110,13 +110,22 @@ public class CartFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.fragment_cart_bt_confirm:
                  confirmClientOrderFragment = new ConfirmClientOrderFragment();
-
-
+                 confirmClientOrderFragment.itemData = items;
                 replace(confirmClientOrderFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;
             case R.id.fragment_cart_bt_more:
                 break;
         }
     }
-}
+
+    public void updateUi(List<Item> itemList) {
+        for (int i = 0; i < itemList.size(); i++) {
+            total = 0.0 + itemList.get(i).getQuantity() * itemList.get(i).getCost();
+        }
+        fragmentCartTvTCost.setText(String.valueOf(total));
+
+    }
+
+    }
+
 

@@ -46,7 +46,7 @@ public class ConfirmClientOrderFragment extends BaseFragment {
     public List<String> note = new ArrayList<>();
     public List<Integer> quantity = new ArrayList<>();
     public String name;
-    public String dCost;
+    public int dCost;
     @BindView(R.id.fragment_confirm_client_order_et_note)
     EditText fragmentConfirmClientOrderEtNote;
     @BindView(R.id.fragment_confirm_client_order_et_address)
@@ -112,7 +112,7 @@ public class ConfirmClientOrderFragment extends BaseFragment {
         }
         fragmentConfirmClientOrderTvTotal.setText(getString(R.string.t_cost) + " " +total);
        fragmentConfirmClientOrderTvDeliveryCost.setText(getString(R.string.delivery_cost)+"  "+ dCost);
-        totalCost = Double.parseDouble(total + dCost);
+        totalCost = total + dCost;
         fragmentConfirmClientOrderTvTotalCost.setText(getString(R.string.total_cost));
     }
 
@@ -164,7 +164,7 @@ public class ConfirmClientOrderFragment extends BaseFragment {
         Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                roomDao.delete();
+                roomDao.deleteAll();
             }
         });
     }
