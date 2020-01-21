@@ -1,6 +1,7 @@
 package com.example.sofra.data.local;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.sofra.data.model.register.RegisterDataRestaurant;
@@ -25,9 +26,10 @@ public class SharedPreferencesManger {
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
             sharedPreferences = activity.getSharedPreferences(
-                    "Blood", activity.MODE_PRIVATE);
+                    "Sofra", Context.MODE_PRIVATE);
         }
     }
+
 
     public static void SaveData(Activity activity, String data_Key, String data_Value) {
         setSharedPreferences(activity);

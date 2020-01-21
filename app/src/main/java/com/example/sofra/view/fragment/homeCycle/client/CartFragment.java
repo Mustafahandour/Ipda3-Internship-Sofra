@@ -77,7 +77,7 @@ public class CartFragment extends BaseFragment {
 
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                         fragmentCartRv.setLayoutManager(linearLayoutManager);
-                        CartAdapter cartAdapter = new CartAdapter(getActivity(), items);
+                        CartAdapter cartAdapter = new CartAdapter(getActivity(), items, CartFragment.this);
                         fragmentCartRv.setAdapter(cartAdapter);
 
                         total = 0.0;
@@ -92,6 +92,16 @@ public class CartFragment extends BaseFragment {
 
             }
         });
+    }
+
+    public void updateUi(List<Item> data) {
+        for (int i = 0; i < data.size(); i++) {
+            total = 0.0;
+            total = total + items.get(i).getQuantity() * items.get(i).getCost();
+        }
+        fragmentCartTvTCost.setText(String.valueOf(total));
+
+
     }
 
     @Override
@@ -109,23 +119,15 @@ public class CartFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fragment_cart_bt_confirm:
-                 confirmClientOrderFragment = new ConfirmClientOrderFragment();
-                 confirmClientOrderFragment.itemData = items;
+                confirmClientOrderFragment = new ConfirmClientOrderFragment();
+                confirmClientOrderFragment.itemData = items;
+
+
                 replace(confirmClientOrderFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
                 break;
             case R.id.fragment_cart_bt_more:
                 break;
         }
     }
-
-    public void updateUi(List<Item> itemList) {
-        for (int i = 0; i < itemList.size(); i++) {
-            total = 0.0 + itemList.get(i).getQuantity() * itemList.get(i).getCost();
-        }
-        fragmentCartTvTCost.setText(String.valueOf(total));
-
-    }
-
-    }
-
+}
 

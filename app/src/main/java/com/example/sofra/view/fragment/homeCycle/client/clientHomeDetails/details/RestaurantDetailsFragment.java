@@ -56,7 +56,7 @@ public class RestaurantDetailsFragment extends BaseFragment {
         restaurantDetailsFragmentVpPager.setAdapter(generalViewPagerAdapter);
         restaurantDetailsFragmentTlTab.setupWithViewPager(restaurantDetailsFragmentVpPager);
         ConfirmClientOrderFragment confirmClientOrderFragment = new ConfirmClientOrderFragment();
-        confirmClientOrderFragment.dCost = Integer.parseInt(showRestaurantData.getDeliveryCost());
+        //   confirmClientOrderFragment.dCost = Integer.parseInt(showRestaurantData.getDeliveryCost());
         return view;
     }
 

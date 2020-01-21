@@ -38,6 +38,14 @@ public interface ApiService {
                                                @Part("region_id") RequestBody regionId,
                                                @Part MultipartBody.Part profileImage);
 
+    @POST("client/profile")
+    @Multipart
+    Call<RegisterRestaurant> profileClientEdit(@Part("api_token") RequestBody apiToken,
+                                               @Part("name") RequestBody name,
+                                               @Part("email") RequestBody email,
+                                               @Part("phone") RequestBody phone,
+                                               @Part("region_id") RequestBody regionId,
+                                               @Part MultipartBody.Part profileImage);
     @POST("restaurant/sign-up")
     @Multipart
     Call<RegisterRestaurant> getRegisterRestaurant(@Part("name") RequestBody name,
@@ -52,6 +60,19 @@ public interface ApiService {
                                                    @Part MultipartBody.Part profileImage,
                                                    @Part("delivery_time") RequestBody deliveryTime);
 
+    @POST("restaurant/profile")
+    @Multipart
+    Call<RegisterRestaurant> profileRestaurantEdit(@Part("api_token") RequestBody apiToken,
+                                                   @Part("name") RequestBody name,
+                                                   @Part("email") RequestBody email,
+                                                   @Part("phone") RequestBody phone,
+                                                   @Part("whatsapp") RequestBody whatsapp,
+                                                   @Part("region_id") RequestBody regionId,
+                                                   @Part("delivery_cost") RequestBody delivery_cost,
+                                                   @Part("minimum_charger") RequestBody minimumCharger,
+                                                   @Part("availability") RequestBody availability,
+                                                   @Part MultipartBody.Part profileImage,
+                                                   @Part("delivery_time") RequestBody deliveryTime);
     @POST("client/login")
 
     @FormUrlEncoded
@@ -93,13 +114,7 @@ public interface ApiService {
                                                  @Field("password_confirmation") String passwordConfirmation);
 
 
-    @POST("client/profile")
-    @FormUrlEncoded
-    Call<RegisterRestaurant> getClientProfile(@Field("api_token") String apiToken);
 
-    @POST("restaurant/profile")
-    @FormUrlEncoded
-    Call<RegisterRestaurant> getRestaurantProfile(@Field("api_token") String apiToken);
 
     @GET("client/my-orders")
     Call<Order> getClientOrder(@Query("api_token") String apiToken,

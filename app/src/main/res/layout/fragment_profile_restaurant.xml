@@ -11,24 +11,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/restaurant_profile_fragment_rl_profile_pic"
-            style="@style/margin_st_end"
-            android:layout_width="@dimen/dim_150dp"
-            android:layout_height="@dimen/dim_150dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dim_4dp"
-            android:background="@drawable/shap_circle"
-            android:gravity="center_horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/restaurant_profile_fragment_ib_profile_pic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/dim_40dp"
-                android:contentDescription="@string/profile_pic" />
-        </RelativeLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/restaurant_profile_fragment_ib_profile_pic"
+            android:layout_width="@dimen/dim_120dp"
+            android:layout_height="@dimen/dim_120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dim_40dp"
+            android:background="@drawable/shap_circle"
+            android:contentDescription="@string/profile_pic" />
 
         <EditText
             android:id="@+id/restaurant_profile_fragment_et_name"
@@ -38,7 +29,7 @@
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_name"
             android:paddingStart="@dimen/dim_16dp"
-            android:paddingEnd="@dimen/dim_16dp"/>
+            android:paddingEnd="@dimen/dim_16dp" />
 
         <EditText
             android:id="@+id/restaurant_profile_fragment_et_mail"
@@ -49,8 +40,7 @@
             android:background="@drawable/shap_circl_rect_grey"
             android:drawableStart="@drawable/ic_mail"
             android:paddingStart="@dimen/dim_16dp"
-            android:paddingEnd="@dimen/dim_16dp"/>
-
+            android:paddingEnd="@dimen/dim_16dp" />
 
 
         <RelativeLayout
@@ -98,6 +88,7 @@
                 android:layout_marginTop="@dimen/dim_8dp" />
 
         </RelativeLayout>
+
         <EditText
             android:id="@+id/restaurant_profile_fragment_et_minimum_charge"
             style="@style/margin_16dp"
@@ -107,15 +98,79 @@
             android:drawableStart="@drawable/ic_money_bill"
             android:paddingStart="@dimen/dim_16dp"
             android:paddingEnd="@dimen/dim_16dp" />
+
+        <EditText
+            android:id="@+id/restaurant_profile_fragment_et_delivery_cost"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:background="@drawable/shap_circl_rect_grey"
+            android:drawableStart="@drawable/ic_money_bill"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
+        <EditText
+            android:id="@+id/restaurant_profile_fragment_et_delivery_time"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:background="@drawable/shap_circl_rect_grey"
+            android:drawableStart="@drawable/ic_clock"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
+        <Switch
+            android:id="@+id/restaurant_profile_fragment_switch_state"
+            android:layout_width="110dp"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_marginStart="@dimen/dim_32dp"
+            android:layout_marginTop="@dimen/dim_32dp"
+            android:paddingStart="@dimen/dim_4dp"
+            android:paddingEnd="@dimen/dim_8dp"
+            android:text="@string/state"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/font_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:text="@string/contact_data"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/album_sp_18"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/restaurant_profile_fragment_et_phone"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:background="@drawable/shap_circl_rect_grey"
+            android:drawableStart="@drawable/ic_phone"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
+        <EditText
+            android:id="@+id/restaurant_profile_fragment_et_whatsApp"
+            style="@style/margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:background="@drawable/shap_circl_rect_grey"
+            android:drawableStart="@drawable/ic_whatsapp"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingEnd="@dimen/dim_16dp" />
+
         <Button
-            android:id="@+id/restaurant_profile_fragment_bt_follow"
+            android:id="@+id/restaurant_profile_fragment_bt_edit"
             android:layout_width="@dimen/dim_200dp"
             android:layout_height="@dimen/dim_50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dim_16dp"
-            android:layout_marginBottom="@dimen/dim_8dp"
+            android:layout_marginBottom="@dimen/dim_16dp"
             android:background="@drawable/shap_bt_rectangle"
-            android:text="@string/follow"
+            android:text="@string/edit"
             android:textColor="@color/white" />
     </LinearLayout>
 </ScrollView>

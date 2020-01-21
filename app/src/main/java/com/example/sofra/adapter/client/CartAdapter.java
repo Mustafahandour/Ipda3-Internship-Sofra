@@ -34,14 +34,18 @@ import static com.example.sofra.data.local.room.RoomManger.getInstance;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     public BaseActivity activity;
-CartFragment cartFragment;
+
     private List<Item> items = new ArrayList<>();
     private RoomDao roomDao;
+    private ItemData itemData;
     private int quantity;
+    CartFragment cartFragment;
 
-    public CartAdapter(Activity activity, List<Item> items) {
+    public CartAdapter(Activity activity, List<Item> items, CartFragment cartFragment) {
         this.activity = (BaseActivity) activity;
         this.items = items;
+        roomDao = getInstance(activity).roomDao();
+        this.cartFragment = cartFragment;
     }
 
     @NonNull
@@ -56,13 +60,60 @@ CartFragment cartFragment;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         setData(holder, position);
         setAction(holder, position);
+        holder.itemCartListBtCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        roomDao.delete(items.get(position));
+                        cartFragment.updateUi(items);
+
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                items.remove(position);
+                                notifyDataSetChanged();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        holder.itemCartListTvIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity = items.get(position).getQuantity() + 1;
+                holder.itemCartListTvQuantity.setText(quantity + "");
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        items.get(position).setQuantity(quantity);
+                        roomDao.onUpdate(items.get(position));
+                        cartFragment.updateUi(items);
+                    }
+                });
+            }
+        });
+        holder.itemCartListTvDecrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity = items.get(position).getQuantity() - 1;
+                holder.itemCartListTvQuantity.setText(quantity + "");
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        items.get(position).setQuantity(quantity);
+                        roomDao.onUpdate(items.get(position));
+                        cartFragment.updateUi(items);
+                    }
+                });
 
 
-    }
+            }
+        });
 
-    @Override
-    public int getItemCount() {
-        return items.size();
+
     }
 
     private void setData(ViewHolder holder, int position) {
@@ -74,30 +125,15 @@ CartFragment cartFragment;
     }
 
     private void setAction(ViewHolder holder, int position) {
-        holder.itemCartListBtCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                roomDao = getInstance(activity).roomDao();
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        roomDao.delete(items.get(position));
-                        items.remove(position);
-                        cartFragment.updateUi(items);
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                notifyDataSetChanged();
-
-                            }
-                        });
-                    }
-                });
-            }
-        });
 
 
     }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
 
 
 
