@@ -53,6 +53,7 @@ public class RestaurantItemsFragment extends BaseFragment {
     RecyclerView fragmentRestaurantCategoryDetailsRvItems;
     @BindView(R.id.fragment_restaurant_category_details_ib_add_items)
     ImageButton fragmentRestaurantCategoryDetailsIbAddItems;
+    TextView itemDialogText;
 
     private List<ItemData> itemDataList = new ArrayList<>();
 
@@ -128,7 +129,8 @@ public class RestaurantItemsFragment extends BaseFragment {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_add_item);
         CircleImageView dialogAddItemCiImage = dialog.findViewById(R.id.dialog_add_item_ci_image);
-
+        itemDialogText = dialog.findViewById(R.id.item_dialog_text);
+        itemDialogText.setText(R.string.add_item);
         dialogAddItemEtItemName = dialog.findViewById(R.id.dialog_add_item_et_item_name);
         dialogAddItemEtItemDes = dialog.findViewById(R.id.dialog_add_item_et_item_des);
         dialogAddItemEtItemPrice = dialog.findViewById(R.id.dialog_add_item_et_item_price);
@@ -154,6 +156,8 @@ public class RestaurantItemsFragment extends BaseFragment {
             public void onClick(View v) {
                 dialog.dismiss();
                 addItem();
+                restaurantItemAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -174,9 +178,6 @@ public class RestaurantItemsFragment extends BaseFragment {
             public void onResponse(Call<ItemList> call, Response<ItemList> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-                        restaurantItemAdapter.notifyDataSetChanged();
-                        RestaurantItemsFragment restaurantCategoryDetailaFragment = new RestaurantItemsFragment();
-                        replace(restaurantCategoryDetailaFragment, getActivity().getSupportFragmentManager(), R.id.nav_host_fragment);
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
                     }
                     Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();

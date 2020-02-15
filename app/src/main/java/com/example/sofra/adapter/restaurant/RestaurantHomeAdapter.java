@@ -51,10 +51,8 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
     EditText dialogEditCategoryEtCategoryName;
 
 
-
-
     private List<CategoryData> categoryDataList = new ArrayList<>();
-    private ArrayList<AlbumFile> image= new ArrayList<>();
+    private ArrayList<AlbumFile> image = new ArrayList<>();
     private String path;
 
     public RestaurantHomeAdapter(Activity activity, List<CategoryData> categoryDataList) {
@@ -100,6 +98,7 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
             @Override
             public void onClick(View v) {
                 deleteCategory(position);
+                notifyDataSetChanged();
 
             }
         });
@@ -117,12 +116,14 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
         getClient().deleteCategory(LoadData(activity, "Restaurant_ApiToken"), String.valueOf(categoryDataList.get(i).getId())).enqueue(new Callback<Category>() {
             @Override
             public void onResponse(Call<Category> call, Response<Category> response) {
-                if (response.body().getStatus() == 1) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    }
                     Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//                    RestaurantHomeAdapter restaurantHomeAdapter = new RestaurantHomeAdapter(activity, categoryDataList);
-//                    restaurantHomeAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+
                 }
-                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -141,11 +142,10 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
         dialog.setContentView(R.layout.dialog_edit_category);
 
 
-
         dialogEditCategoryEtCategoryName = dialog.findViewById(R.id.dialog_edit_category_et_category_name);
         // set the custom dialog components  image clicked
         dialogEditCategoryCiImage = dialog.findViewById(R.id.dialog_edit_category_ci_image);
-        onLoadImageFromUrl(dialogEditCategoryCiImage,categoryDataList.get(i).getPhotoUrl(),activity);
+        onLoadImageFromUrl(dialogEditCategoryCiImage, categoryDataList.get(i).getPhotoUrl(), activity);
         dialogEditCategoryCiImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,6 +169,7 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
             public void onClick(View v) {
                 dialog.dismiss();
                 editCategory(i);
+                notifyDataSetChanged();
 
             }
         });
@@ -176,18 +177,22 @@ public class RestaurantHomeAdapter extends RecyclerView.Adapter<RestaurantHomeAd
     }
 
     private void editCategory(int i) {
-       String name = dialogEditCategoryEtCategoryName.getText().toString().trim();
-        getClient().editCategory(convertToRequestBody(name),convertFileToMultipart(path,"photo"),
-                convertToRequestBody(LoadData(activity,"Restaurant_ApiToken")),
+        String name = dialogEditCategoryEtCategoryName.getText().toString().trim();
+        getClient().editCategory(convertToRequestBody(name), convertFileToMultipart(path, "photo"),
+                convertToRequestBody(LoadData(activity, "Restaurant_ApiToken")),
                 convertToRequestBody(String.valueOf(categoryDataList.get(i).getId()))).enqueue(new Callback<Category>() {
             @Override
             public void onResponse(Call<Category> call, Response<Category> response) {
-                if (response.body().getStatus() == 1) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+                    }
+
                     Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
 
                 }
-                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-
             }
 
             @Override

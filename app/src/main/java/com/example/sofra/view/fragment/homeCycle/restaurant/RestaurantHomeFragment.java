@@ -178,6 +178,7 @@ public class RestaurantHomeFragment extends BaseFragment {
             public void onClick(View v) {
                 dialog.dismiss();
                 addCategory();
+                restaurantCategoryAdapter.notifyDataSetChanged();
 
             }
         });
@@ -191,9 +192,7 @@ public class RestaurantHomeFragment extends BaseFragment {
             public void onResponse(Call<Category> call, Response<Category> response) {
                 if (response.body().getStatus() == 1) {
                     Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
-                    restaurantCategoryAdapter.notifyDataSetChanged();
-                    RestaurantHomeFragment restaurantHomeFragment = new RestaurantHomeFragment();
-                    replace(restaurantHomeFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
+
                 }
                 Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 

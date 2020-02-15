@@ -15,6 +15,7 @@ import com.example.sofra.data.local.SharedPreferencesManger;
 import com.example.sofra.view.activity.SplashActivity;
 import com.example.sofra.view.fragment.BaseFragment;
 import com.example.sofra.view.fragment.homeCycle.general.AboutAppFragment;
+import com.example.sofra.view.fragment.homeCycle.general.ChangePasswordFragment;
 import com.example.sofra.view.fragment.homeCycle.general.ContactUsFragment;
 
 import butterknife.BindView;
@@ -89,6 +90,8 @@ public class MoreRestaurantFragment extends BaseFragment {
             case R.id.fragment_more_restaurant_et_comment:
                 break;
             case R.id.fragment_more_restaurant_et_change_password:
+                ChangePasswordFragment changePasswordFragment = new ChangePasswordFragment();
+                replace(changePasswordFragment, getActivity().getSupportFragmentManager(), R.id.nav_host_fragment);
                 break;
             case R.id.fragment_more_restaurant_et_logout:
                 openDialog();
@@ -102,9 +105,9 @@ public class MoreRestaurantFragment extends BaseFragment {
         dialog.setContentView(R.layout.dialog_logout_action);
 
         // set the custom dialog components - text, image and button
-        TextView text = (TextView) dialog.findViewById(R.id.logout_dialog_text);
+        TextView text = dialog.findViewById(R.id.logout_dialog_text);
         text.setText(getString(R.string.are_you_sure_to_logout));
-        ImageButton accept = (ImageButton) dialog.findViewById(R.id.logout_dialog_ok);
+        ImageButton accept = dialog.findViewById(R.id.logout_dialog_ok);
         accept.setImageResource(R.drawable.ic_true);
 
         // if button is clicked, close the custom dialog
@@ -116,7 +119,7 @@ public class MoreRestaurantFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
-        ImageButton cancel = (ImageButton) dialog.findViewById(R.id.logout_dialog_cancel);
+        ImageButton cancel = dialog.findViewById(R.id.logout_dialog_cancel);
         cancel.setImageResource(R.drawable.ic_wrong);
 
 

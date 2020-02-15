@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.sofra.R;
 import com.example.sofra.data.model.register.RegisterDataRestaurant;
 import com.example.sofra.data.model.register.RegisterRestaurant;
+import com.example.sofra.helper.InternetState;
 import com.example.sofra.view.activity.HomeActivity;
 import com.example.sofra.view.fragment.BaseFragment;
 import com.google.android.material.textfield.TextInputLayout;
@@ -62,7 +63,7 @@ public class LoginFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         initFragment();
         unbinder = ButterKnife.bind(this, view);
-//
+        InternetState.isConnected(getActivity());
         return view;
     }
 

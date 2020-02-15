@@ -90,7 +90,7 @@ public class RestaurantOrderAdapter extends RecyclerView.Adapter<RestaurantOrder
         } else if (orderDataList.get(position).getState().equals("delivered")) {
             holder.itemRestaurantOrderListBtOrderCall.setVisibility(View.GONE);
             holder.itemRestaurantOrderListBtOrderCancel.setVisibility(View.GONE);
-            holder.itemRestaurantOrderListBtOrderAccept.setText(activity.getString(R.string.accept));
+            holder.itemRestaurantOrderListBtOrderAccept.setText(activity.getString(R.string.deliveried));
             holder.itemRestaurantOrderListBtOrderAccept.setBackgroundResource(R.drawable.shap_circl_rect_green);
 
         } else {

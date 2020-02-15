@@ -19,7 +19,6 @@ import com.example.sofra.adapter.restaurant.RestaurantOffersAdapter;
 import com.example.sofra.data.model.DateTxt;
 import com.example.sofra.data.model.offers.Offers;
 import com.example.sofra.data.model.offers.OffersData;
-import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.OnEndLess;
 import com.example.sofra.view.fragment.BaseFragment;
 import com.yanzhenjie.album.Action;
@@ -53,6 +52,7 @@ public class RestaurantOffersFragment extends BaseFragment {
     RecyclerView fragmentRestaurantOfferRvOffers;
     @BindView(R.id.fragment_restaurant_offers_bt_add_offers)
     Button fragmentRestaurantOffersBtAddOffers;
+    TextView dialogOfferText;
 
 
     private Unbinder unbinder;
@@ -151,6 +151,8 @@ public class RestaurantOffersFragment extends BaseFragment {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_add_offers);
         CircleImageView dialogAddOfferCiImage = dialog.findViewById(R.id.dialog_add_offer_ci_image);
+        dialogOfferText = dialog.findViewById(R.id.dialog_offer_text);
+        dialogOfferText.setText(getString(R.string.add_offers));
         dialogAddOfferCiImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +168,7 @@ public class RestaurantOffersFragment extends BaseFragment {
             }
         });
 
-         dialogAddOfferTvDateFrom = dialog.findViewById(R.id.dialog_add_offer_tv_date_from);
+        dialogAddOfferTvDateFrom = dialog.findViewById(R.id.dialog_add_offer_tv_date_from);
         Calendar calendar = Calendar.getInstance();
         String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
         String month = String.valueOf(calendar.get(Calendar.MONTH));
@@ -181,7 +183,7 @@ public class RestaurantOffersFragment extends BaseFragment {
         });
 
 
-         dialogAddOfferTvDateTo = dialog.findViewById(R.id.dialog_add_offer_tv_date_to);
+        dialogAddOfferTvDateTo = dialog.findViewById(R.id.dialog_add_offer_tv_date_to);
         dialogAddOfferTvDateTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,10 +192,10 @@ public class RestaurantOffersFragment extends BaseFragment {
             }
         });
 
-         dialogAddOfferEtOfferName = dialog.findViewById(R.id.dialog_add_offer_et_offer_name);
-         dialogAddOfferEtOfferDes = dialog.findViewById(R.id.dialog_add_offer_et_offer_des);
-         dialogAddOfferEtPrice = dialog.findViewById(R.id.dialog_add_offer_et_price);
-         dialogAddOfferEtOfferPrice = dialog.findViewById(R.id.dialog_add_offer_et_offer_price);
+        dialogAddOfferEtOfferName = dialog.findViewById(R.id.dialog_add_offer_et_offer_name);
+        dialogAddOfferEtOfferDes = dialog.findViewById(R.id.dialog_add_offer_et_offer_des);
+        dialogAddOfferEtPrice = dialog.findViewById(R.id.dialog_add_offer_et_price);
+        dialogAddOfferEtOfferPrice = dialog.findViewById(R.id.dialog_add_offer_et_offer_price);
         Button dialogAddOfferBtAdd = dialog.findViewById(R.id.dialog_add_offer_bt_add);
         dialogAddOfferBtAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,9 +219,9 @@ public class RestaurantOffersFragment extends BaseFragment {
         String fromDate = dialogAddOfferTvDateFrom.getText().toString().trim();
         String toDate = dialogAddOfferTvDateTo.getText().toString().trim();
         getClient().getNewRestaurantOffers(convertToRequestBody(name), convertToRequestBody(des),
-                convertToRequestBody(price), convertToRequestBody(offerPrice),convertToRequestBody(fromDate),
-                convertToRequestBody(toDate), convertToRequestBody(LoadData(getActivity(),"Restaurant_ApiToken")),
-                convertFileToMultipart(path,"photo")).enqueue(new Callback<Offers>() {
+                convertToRequestBody(price), convertToRequestBody(offerPrice), convertToRequestBody(fromDate),
+                convertToRequestBody(toDate), convertToRequestBody(LoadData(getActivity(), "Restaurant_ApiToken")),
+                convertFileToMultipart(path, "photo")).enqueue(new Callback<Offers>() {
             @Override
             public void onResponse(Call<Offers> call, Response<Offers> response) {
 
@@ -227,12 +229,11 @@ public class RestaurantOffersFragment extends BaseFragment {
                     if (response.body().getStatus() == 1) {
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         restaurantOffersAdapter.notifyDataSetChanged();
-                        RestaurantOffersFragment restaurantOffersFragment = new RestaurantOffersFragment();
-                        replace(restaurantOffersFragment,getActivity().getSupportFragmentManager(),R.id.nav_host_fragment);
+
                     }
                     Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
 

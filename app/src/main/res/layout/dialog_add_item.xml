@@ -12,7 +12,6 @@
         android:layout_height="@dimen/dim_50dp"
         android:layout_marginTop="@dimen/dim_16dp"
         android:gravity="center"
-        android:text="@string/item_picture"
         android:textColor="@color/purple"
         android:textSize="@dimen/font_20sp"
         android:textStyle="bold" />

@@ -46,6 +46,7 @@ public interface ApiService {
                                                @Part("phone") RequestBody phone,
                                                @Part("region_id") RequestBody regionId,
                                                @Part MultipartBody.Part profileImage);
+
     @POST("restaurant/sign-up")
     @Multipart
     Call<RegisterRestaurant> getRegisterRestaurant(@Part("name") RequestBody name,
@@ -73,6 +74,7 @@ public interface ApiService {
                                                    @Part("availability") RequestBody availability,
                                                    @Part MultipartBody.Part profileImage,
                                                    @Part("delivery_time") RequestBody deliveryTime);
+
     @POST("client/login")
 
     @FormUrlEncoded
@@ -112,8 +114,6 @@ public interface ApiService {
     Call<ResetPassword> getNewRestaurantPassword(@Field("code") String code,
                                                  @Field("password") String password,
                                                  @Field("password_confirmation") String passwordConfirmation);
-
-
 
 
     @GET("client/my-orders")
@@ -180,6 +180,21 @@ public interface ApiService {
                               @Part("offer_price") RequestBody offerPrice,
                               @Part MultipartBody.Part photo);
 
+    @POST("restaurant/update-item")
+    @Multipart
+    Call<ItemList> getItemEdit(@Part("api_token") RequestBody apiToken,
+                               @Part("item_id") RequestBody itemId,
+                               @Part("name") RequestBody name,
+                               @Part("description") RequestBody description,
+                               @Part("price") RequestBody price,
+                               @Part("offer_price") RequestBody offerPrice,
+                               @Part MultipartBody.Part photo);
+
+    @POST("restaurant/delete-item")
+    @FormUrlEncoded
+    Call<Category> deleteItem(@Field("api_token") String apiToken,
+                              @Field("item_id") String itemId);
+
     @GET("client/notifications")
     Call<Notification> getClientNotification(@Query("api_token") String apToken);
 
@@ -239,13 +254,13 @@ public interface ApiService {
                              @Field("phone") String phone,
                              @Field("name") String name,
                              @Field("api_token") String apiToken,
-                             @Field("items[]")List<Integer> items,
-                             @Field("quantities[]")List<Integer> quantities,
-                             @Field("notes[]")List<String> notes);
+                             @Field("items[]") List<Integer> items,
+                             @Field("quantities[]") List<Integer> quantities,
+                             @Field("notes[]") List<String> notes);
+
     @GET("restaurant/my-offers")
     Call<Offers> getRestaurantOffers(@Query("api_token") String apiToken,
-                             @Query("page") int page);
-
+                                     @Query("page") int page);
 
 
     @POST("restaurant/new-offer")
@@ -258,6 +273,37 @@ public interface ApiService {
                                         @Part("ending_at") RequestBody ending_at,
                                         @Part("api_token") RequestBody apiToken,
                                         @Part MultipartBody.Part photo);
+
+    @POST("restaurant/update-offer")
+    @Multipart
+    Call<Offers> editOffers(@Part("api_token") RequestBody apiToken,
+                            @Part("offer_id") RequestBody offerId,
+                            @Part("name") RequestBody name,
+                            @Part("description") RequestBody description,
+                            @Part("price") RequestBody price,
+                            @Part("offer_price") RequestBody offer_price,
+                            @Part("starting_at") RequestBody starting_at,
+                            @Part("ending_at") RequestBody ending_at,
+                            @Part MultipartBody.Part photo);
+
+    @POST("restaurant/delete-offer")
+    @FormUrlEncoded
+    Call<Category> deleteOffer(@Field("api_token") String apiToken,
+                               @Field("offer_id") String offerId);
+
+    @POST("client/change-password")
+    @FormUrlEncoded
+    Call<Region> clientPassword(@Field("api_token") String apiToken,
+                                @Field("old_password") String old_password,
+                                @Field("password") String password,
+                                @Field("password_confirmation") String password_confirmation);
+
+    @POST("restaurant/change-password")
+    @FormUrlEncoded
+    Call<Region> restaurantPassword(@Field("api_token") String apiToken,
+                                    @Field("old_password") String old_password,
+                                    @Field("password") String password,
+                                    @Field("password_confirmation") String password_confirmation);
 }
 
 

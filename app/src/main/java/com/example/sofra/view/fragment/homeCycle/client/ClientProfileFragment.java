@@ -89,7 +89,7 @@ public class ClientProfileFragment extends BaseFragment {
 
         cityAdapter = new CustomSpinnerAdapter(getActivity());
         regionAdapter = new CustomSpinnerAdapter(getActivity());
-        getSpinnerData(clientProfileFragmentSpCity, cityAdapter, getString(R.string.city), getClient().getCity(), Integer.parseInt(registerDataRestaurant.getUserRestaurant().getRegion().getCityId()), new AdapterView.OnItemSelectedListener() {
+        getSpinnerData(clientProfileFragmentSpCity, cityAdapter, getString(R.string.city), getClient().getCity(), registerDataRestaurant.getUserRestaurant().getRegion().getCity().getId(), new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
